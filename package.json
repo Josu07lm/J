@@ -13,7 +13,7 @@
   "author": "NAYLA",
   "license": "ISC",
   "dependencies": {
-    "@adiwajshing/baileys": "^3.4.1",
+    "@adiwajshing/baileys": "^3.5.0",
     "@kagchi/kag-api": "^1.5.5",
     "async": "^3.2.0",
     "axios": "^0.21.1",
@@ -26,7 +26,6 @@
     "imgbb-uploader": "^1.3.0",
     "lolis.life": "^4.0.0",
     "moment-timezone": "^0.5.33",
-    "imgbb-uploader": "^1.3.0",
     "multistream": "^4.0.1",
     "node-fetch": "^2.6.1",
     "remove.bg": "^1.3.0",
@@ -45,4 +44,3 @@
   },
   "homepage": "https://github.com/naylachan/BOTZ#readme"
 }
-
