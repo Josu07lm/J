@@ -8,11 +8,11 @@
 exports.menuZ = (prefix, bulan, tchat, ownername, ramadhan, natal, pancasila, tahunbaru, agustus, tz) => {
 	return`╔════════════════════
 ║╭═══════════════════
-║│${tz} \`\`\`BOT WHATSAPP NEW\`\`\`
-║│${tz} \`\`\`OWNER : ${ownername}\`\`\`
-║│${tz} \`\`\`AUTHOR : NAYLA CHAN\`\`\`
-║│${tz} \`\`\`NAMEBOT : BOTWA\`\`\`
-║│${tz} \`\`\`BULAN : ${bulan}\`\`\`
+║│${tz} \`\`\`NUEVO WHATSAPP BOT\`\`\`
+║│${tz} \`\`\`DUEÑO : ${ownername}\`\`\`
+║│${tz} \`\`\`AUTOR : FELIXCRACK\`\`\`
+║│${tz} \`\`\`NOMBRE DEL BOT : FX-BOT-PS\`\`\`
+║│${tz} \`\`\`MES : ${bulan}\`\`\`
 ║│${tz} \`\`\`CHAT : ${tchat}\`\`\`
 ║╰═══════════════════─
 ╠════[ \`\`\`ANTI•MENU\`\`\` ]══════
