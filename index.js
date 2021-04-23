@@ -50,7 +50,7 @@ const {
    processTime
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./lib/color')
-const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
+const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, EXITO, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const request = require('request')
 const { recognize } = require('./lib/ocr')
@@ -129,7 +129,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 		    start('2', 'Connecting...')
         	})
 	        nayla.on('open', () => {
-	    	success('2', 'Connected')
+	    	EXITO('2', 'Connected')
          	})
         	await nayla.connect({timeoutMs: 30*1000})
             fs.writeFileSync('./self-bot.json', JSON.stringify(nayla.base64EncodedAuthInfo(), null, '\t'))
@@ -155,18 +155,19 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 		    }
 			teks = `╔════════════════════\n`
 			teks += `║╭───────────────────\n`
-			teks += `║│➻ *HALO @${num.split('@')[0]}*\n`
-			teks += `║│➻ *SELAMAT DATANG DIGRUB*\n`
+			teks += `║│➻ *HOLA @${num.split('@')[0]}*\n`
+			teks += `║│➻ *BIENVENIDO AL GRUPO🙌*\n`
 			teks += `║│➻ *${mdata.subject}*\n`			
 			teks += `║╰───────────────────\n`
-			teks += `╠══[ *WELCOME [•] NEW* ]════\n`
+			teks += `╠══[ *BIENVENIDO*]════\n`
 			teks += `║╭───────[ *INTRO* ]──────\n`
-			teks += `║│➻ *NAMA* :\n`
-			teks += `║│➻ *UMUR* :\n`
-			teks += `║│➻ *GENDER* :\n`
-			teks += `║│➻ *ASKOT* :\n`
-			teks += `║│➻ *AGAMA* :\n`
-			teks += `║│➻ *ALASAN BERGABUNG* :\n`
+			teks += `║│➻ *NOMBRE* :\n`
+			teks += `║│➻ *EDAD* :\n`
+			teks += `║│➻ *GÉNERO* :\n`
+			teks += `║╰───────────────────\n`
+			teks += `║╭───────[ *CRÉDITOS* ]──────\n`
+			teks += `║│➻ *GRUPO OFC*: https://chat.whatsapp.com/DAheuNgcvCj92UNcZFTKEo :\n`
+			teks += `║│➻ *YOUTUBE*: https://youtube.com/channel/UCqCaZ_SEhSykF3-PR5os7YA :\n`
 			teks += `║╰───────────────────\n`
 			teks += `╚════════════════════\n`
 			let buff = await getBuffer(ppimg)
@@ -286,7 +287,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 		    const slot77 = slot4[Math.floor(Math.random() * (slot7.length))]
 		    const slot88 = slot5[Math.floor(Math.random() * (slot8.length))]
 			const slot99 = slot6[Math.floor(Math.random() * (slot9.length))]	                       
-            const kapan2 = ['Hari ini','Mungkin besok','1 Minggu lagi','Masih lama','3 Bulan lagi','7 Bulan lagi','3 Tahun lagi','4 Bulan lagi','2 Bulan lagi','1 Tahun lagi','1 Bulan lagi','Coba ulangi']
+            const kapan2 = ['Hoy','Mungkin besok','1 Minggu lagi','Masih lama','3 Bulan lagi','7 Bulan lagi','3 Tahun lagi','4 Bulan lagi','2 Bulan lagi','1 Tahun lagi','1 Bulan lagi','Coba ulangi']
 			const apa = ['Ya','Mungkin','Tidak','Coba Ulangi']
 			var chat1 = `0@s.whatsapp.net`
 		    var split = `ALL CHAT BOTZ`
@@ -306,7 +307,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
             + 'VERSION:3.0\n' 
             + `FN:${ownername}\n` 
             + `ORG: Pengembang bot;\n`
-             + 'TEL;type=CELL;type=VOICE;waid=62812874133914:+62 812-8741-33914\n'
+             + 'TEL;type=CELL;type=VOICE;waid=12603763944 :+62 812-8741-33914\n'
             + 'END:VCARD' 
             colors = ['red', 'white', 'black', 'blue', 'yellow', 'green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
@@ -339,23 +340,23 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     reply(donasi1)
                     break
 		            case 'play':
-		            if (args.length < 1) return reply('MASUKKAN JUDUL LAGU') 
-					costum('[❗] PROSES LOADING', text, tescuk, cr) 
+		            if (args.length < 1) return reply('INTRODUZCA EL TÍTULO DE LA CANCIÓN') 
+					costum('[❗] EN PROCESO', text, tescuk, cr) 
 		            anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/yt-play?q=${body.slice(6)}`, {method: 'get'})
 		            anu1 = await getBuffer(anu.thumb)
-		            anu2 = `➻ *JUDUL* : ${anu.title}\n`
-		            anu2 += `➻ *UPLOAD* : ${anu.uploaded}\n`
-		            anu2 += `➻ *DURASI* : ${anu.duration}\n`
-		            anu2 += `➻ *VIEW* : ${anu.total_view}\n`
-		            anu2 += `➻ *CHANNEL* : ${anu.channel}\n`
-		            anu2 += `➻ *SIZE* : ${anu.filesize}\n`
+		            anu2 = `➻ *TÍTULO* : ${anu.title}\n`
+		            anu2 += `➻ *SE SUBIÓ* : ${anu.uploaded}\n`
+		            anu2 += `➻ *DURACIÓN* : ${anu.duration}\n`
+		            anu2 += `➻ *VISTAS* : ${anu.total_view}\n`
+		            anu2 += `➻ *CANAL* : ${anu.channel}\n`
+		            anu2 += `➻ *TAMAÑO* : ${anu.filesize}\n`
 		            anu3 = await getBuffer(anu.link)
 		            nayla.sendMessage(from, anu1, image, {caption: anu2, quoted: nay1})
 		            nayla.sendMessage(from, anu3, audio, {mimetype: 'audio/mp4', filename: `${anu.title}`, quoted: nay1})
 		            break
 		            case 'ytmp3':
-		            if (args.length < 1) return reply('MASUKKAN LINK YT') 
-					costum('[❗] PROSES LOADING', text, tescuk, cr) 
+		            if (args.length < 1) return reply('INGRSA LINK YT') 
+					costum('[❗] EN PROCESO', text, tescuk, cr) 
 		            anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ytmp3?url=${body.slice(7)}`, {method: 'get'})
 		            anu1 = await getBuffer(anu.thumb)
 		            anu2 = `➻ *JUDUL* : ${anu.title}\n`
@@ -365,8 +366,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 		            nayla.sendMessage(from, anu3, audio, {mimetype: 'audio/mp4', filename: `${anu.title}`, quoted: nay1})
 		            break
 		            case 'ytmp4':
-		            if (args.length < 1) return reply('MASUKKAN LINK YT') 
-					costum('[❗] PROSES LOADING', text, tescuk, cr) 
+		            if (args.length < 1) return reply('INGRESA EL ENLACE YT') 
+					costum('[❗] EN PROCESO', text, tescuk, cr) 
 		            anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ytmp3?url=${body.slice(7)}`, {method: 'get'})
 		            anu1 = await getBuffer(anu.thumb)
 		            anu2 = `➻ *JUDUL* : ${anu.title}\n`
@@ -376,8 +377,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 		            nayla.sendMessage(from, anu3, video, {mimetype: 'video/mp4', filename: `${anu.title}`, quoted: nay1})
 		            break
                     case 'stalktwit':
-                    if (args.length < 1) return reply('MASUKKAN USERNAME') 
-					costum('[❗] PROSES LOADING', text, tescuk, cr) 
+                    if (args.length < 1) return reply('INTRODUZCA SU NOMBRE DE USUARIO') 
+					costum('[❗] EN PROCESO', text, tescuk, cr) 
                     anu = await fetchJson(`https://videfikri.com/api/stalktwit/?username=${args[0]}`, {method: 'get'})
                     anu1 = await getBuffer(anu.result.profile)
                     anu2 = `➻ *NAMA* : ${anu.result.full_name}\n`
@@ -392,8 +393,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     nayla.sendMessage(from, anu1, image,{caption: anu2, quoted: nay1})
                     break
                     case 'stalkgithub':
-                    if (args.length < 1) return reply('MASUKKAN USERNAME') 
-					costum('[❗] PROSES LOADING', text, tescuk, cr)
+                    if (args.length < 1) return reply('INTRODUZCA SU NOMBRE DE USUARIO') 
+					costum('[❗] EN PROCESO', text, tescuk, cr)
                     anu = await fetchJson(`https://videfikri.com/api/github/?username=${args[0]}`, {method: 'get'})
                     anu1 = await getBuffer(anu.result.profile_pic)                           
                     anu2 = `➻ *NAMA* : ${anu.result.username}\n`
@@ -415,72 +416,72 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     nayla.sendMessage(from, anu1, image,{caption: anu2, quoted: nay1})
                     break
                     case 'steam':
-                    if (args.length < 1) return reply('MASUKKAN JUDUL') 
-					costum('[❗] PROSES LOADING', text, tescuk, cr)
+                    if (args.length < 1) return reply('Ingrese el tituloL') 
+					costum('[❗] EN PROCESO', text, tescuk, cr)
                     anu = await fetchJson(`https://videfikri.com/api/steam/?username=${args[0]}`, {method: 'get'})
-                    anu1 = `➻ *NAMA* : ${anu.result.name}\n`
-                    anu1 += `➻ *USER* : ${anu.result.username}\n`
-                    anu1 += `➻ *COUNTRY* : ${anu.result.country}\n`
+                    anu1 = `➻ *NOMBRE* : ${anu.result.name}\n`
+                    anu1 += `➻ *USUARIO* : ${anu.result.username}\n`
+                    anu1 += `➻ *PAÍS* : ${anu.result.country}\n`
                     anu1 += `➻ *IMG* : ${anu.result.image}\n`
-                    anu1 += `➻ *LEVEL* : ${anu.result.level}\n`
-                    anu1 += `➻ *FACEIT* : ${anu.result.faceit}\n`
+                    anu1 += `➻ *NIVEL* : ${anu.result.level}\n`
+                    anu1 += `➻ *ENFRENTARLO* : ${anu.result.faceit}\n`
                     anu1 += `➻ *BADGES* : ${anu.result.badges}\n`
                     anu1 += `➻ *MENTS* : ${anu.result.achievements}\n`
                     anu1 += `➻ *ON* : ${anu.result.onkah}\n`
                     nayla.sendMessage(from, anu1, text,{quoted: nay1})
                     break 
                     case 'fb':
-                    if (args.length < 1) return reply('MASUKKAN LINK/URL FB') 
-					costum('[❗] PROSES LOADING', text, tescuk, cr)
+                    if (args.length < 1) return reply('INTRODUZCA ENLACE / URL FB') 
+					costum('[❗] EN PROCESO', text, tescuk, cr)
                     anu = await fetchJson(`https://videfikri.com/api/fbdl/?urlfb=${args[0]}`, {method: 'get'})
                     anu1 = await getBuffer(anu.result.url)
                     anu2 = `➻ *JUDUL* : ${anu.result.judul}\n`
                     nayla.sendMessage(from, anu1, video, {caption: anu2, mimetype: 'video/mp4', quoted: nay1})
                     break 
                     case 'igfoto':
-                    if (args.length < 1) return reply('MASUKKAN LINK/URL FB') 
-					costum('[❗] PROSES LOADING', text, tescuk, cr)
+                    if (args.length < 1) return reply('INGRESAR FB LINK / URL') 
+					costum('[❗] EN PROCESO', text, tescuk, cr)
                     anu = await fetchJson(`https://videfikri.com/api/igdl/?url=${args[0]}`, {method: 'get'})
                     anu1 = await getBuffer(anu.result.thumb)                     
-                    anu2 = `➻ *NAME* : ${anu.result.full_name}\n`
-                    anu2 += `➻ *USER* : ${anu.result.username}\n`
-                    anu2 += `➻ *LIKE* : ${anu.result.like}\n`
-                    anu2 += `➻ *COMENT* : ${anu.result.comment}\n`
-                    anu2 += `➻ *DURASI* : ${anu.result.duration}\n`
-                    anu2 += `➻ *CAPTION* : ${anu.result.caption}\n` 
-                    anu2 += `➻ *[❗] FOTO SEDANG DIKIRIM*\n`
+                    anu2 = `➻ *NOMBRE* : ${anu.result.full_name}\n`
+                    anu2 += `➻ *USUARIO* : ${anu.result.username}\n`
+                    anu2 += `➻ *LIKES* : ${anu.result.like}\n`
+                    anu2 += `➻ *COMENTARIOS* : ${anu.result.comment}\n`
+                    anu2 += `➻ *DURACIÓN* : ${anu.result.duration}\n`
+                    anu2 += `➻ *SUBTÍTULO* : ${anu.result.caption}\n` 
+                    anu2 += `➻ *[❗] SE ESTA ENVIANDO FOTOS*\n`
                     nayla.sendMessage(from, anu2, text, {quoted: nay1})
                     anu3 = await getBuffer(anu.result.image_text)
                     nayla.sendMessage(from, anu3, image, {quoted: nay1})
                     break
                     case 'igvideo':
-                    if (args.length < 1) return reply('MASUKKAN LINK/URL FB') 
-					costum('[❗] PROSES LOADING', text, tescuk, cr)
+                    if (args.length < 1) return reply('INGRESAR FB LINK / URL') 
+					costum('[❗] PROSES', text, tescuk, cr)
                     anu = await fetchJson(`https://videfikri.com/api/igdl/?url=${args[0]}`, {method: 'get'})
                     anu1 = await getBuffer(anu.result.thumb)                     
-                    anu2 = `➻ *NAME* : ${anu.result.full_name}\n`
-                    anu2 += `➻ *USER* : ${anu.result.username}\n`
-                    anu2 += `➻ *LIKE* : ${anu.result.like}\n`
-                    anu2 += `➻ *COMENT* : ${anu.result.comment}\n`
-                    anu2 += `➻ *DURASI* : ${anu.result.duration}\n`
+                    anu2 = `➻ *NOMBRE* : ${anu.result.full_name}\n`
+                    anu2 += `➻ *USUARIO* : ${anu.result.username}\n`
+                    anu2 += `➻ *COMO* : ${anu.result.like}\n`
+                    anu2 += `➻ *COMENTARIOS* : ${anu.result.comment}\n`
+                    anu2 += `➻ *DURACIÓN* : ${anu.result.duration}\n`
                     anu2 += `➻ *CAPTION* : ${anu.result.caption}\n` 
-                    anu2 += `➻ *[❗] VIDEO SEDANG DIKIRIM*\n`
+                    anu2 += `➻ *[❗] EL VIDEO SE ESTÁ ENVIANDO*\n`
                     nayla.sendMessage(from, anu2, text, {quoted: nay1})
                     anu3 = await getBuffer(anu.result.video)
                     nayla.sendMessage(from, anu3, video, {mimetype: 'video/mp4', quoted: nay1})
                     break                          
                     case 'ytsearch':
-                    if (args.length < 1) return reply('MASUKKAN LINK/URL FB') 
-					costum('[❗] PROSES LOADING', text, tescuk, cr)
+                    if (args.length < 1) return reply('INGRESAR FB LINK / URL') 
+					costum('[❗] PROCESO ', text, tescuk, cr)
                     anu = await fetchJson(`https://videfikri.com/api/ytsearch/?query=${args[0]}`, {method: 'get'})
                     anu1 = getBuffer(anu.result.data.thumbnail)
-                    anu2 = `➻ *NAME* : ${anu.result.data.judul}\n`
+                    anu2 = `➻ *NOMBRE* : ${anu.result.data.judul}\n`
                     anu2 += `➻ *ID* : ${anu.result.data.id}\n`                    
-                    anu2 += `➻ *DURASI* : ${anu.result.data.duration}\n`
+                    anu2 += `➻ *DURACIÓN* : ${anu.result.data.duration}\n`
                     anu2 += `➻ *CHANEL* : ${anu.result.data.id}\n`
                     anu2 += `➻ *PUBLIC.AT* : ${anu.result.data.published_at}\n`
-                    anu2 += `➻ *VIEWS* : ${anu.result.data.views}\n`
-                    anu2 += `➻ *DESK* : ${anu.result.data.description}\n`  
+                    anu2 += `➻ *VISTAS* : ${anu.result.data.views}\n`
+                    anu2 += `➻ *DESCRIPCIÓN* : ${anu.result.data.description}\n`  
                     nayla.sendMessage(from, anu1, image, {caption: anu2, quoted: nay1})
                     break    
                          
@@ -489,19 +490,19 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 /*====================================================[ CASE BY NAYLA ]==============================================================*/                    	 
                                         
                     case 'hurufkebalik':
-                    if (args.length < 1) return reply('MASUKKAN TEXT') 
+                    if (args.length < 1) return reply('INGRESE TEXTO') 
                     anu = await fetchJson(`https://videfikri.com/api/hurufterbalik/?query=${body.slice(14)}`)
                     anu1 = `${anu.result.kata}`
                     nayla.sendMessage(from, anu1, text, {quoted: nay1})
                     break    
                     case 'jumlah':
-                    if (args.length < 1) return reply('MASUKKAN TEXT') 
+                    if (args.length < 1) return reply('INGRESE TEXTO') 
                     anu = await fetchJson(`https://videfikri.com/api/jumlahhuruf/?query=${body.slice(8)}`)
                     anu1 = `${anu.result.jumlah}`
                     nayla.sendMessage(from, anu1, text, {quoted: nay1})
                     break       
                     case 'hilih':
-                    if (args.length < 1) return reply('MASUKKAN TEXT') 
+                    if (args.length < 1) return reply('INGRESE TEXTO') 
                     anu = await fetchJson(`https://videfikri.com/api/hilih/?query=${body.slice(7)}`)
                     anu1 = `${anu.result.kata}`
                     nayla.sendMessage(from, anu1, text, {quoted: nay1})
@@ -610,16 +611,16 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 /*====================================================[ CASE BY NAYLA ]==============================================================*/                    	 
                                                              
                     case 'spamemail':
-                    if (args.length < 1) return reply('MASUKKAN EMAIL&NOMER&PESAN') 
-					costum('SUKSES', text, tescuk, cr)
+                    if (args.length < 1) return reply('INGRESE CORREO ELECTRÓNICO, NÚMERO Y MENSAJE') 
+					costum('ÉXITO', text, tescuk, cr)
                     subjek = args[0]
                     pesan = args[1]
                     email = args[2] 
                     anu = await fetchJson(`https://videfikri.com/api/spamemail?email=${email}&subjek${subjek}=&pesan=${pesan}`)          
                     break            
                     case 'spamcall':
-                    if (args.length < 1) return reply('MASUKKAN NOMER') 
-					costum('SUKSES', text, tescuk, cr)
+                    if (args.length < 1) return reply('INGRESAR NÚMERO') 
+					costum('ÉXITO', text, tescuk, cr)
                     nomer = args[0]                    
                     anu = await fetchJson(`https://videfikri.com/api/call?nohp=${nomer}`)          
                     break        
@@ -653,22 +654,22 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     anu1 = await getBuffer(anu.result.soal_gbr)
                     anu2 = `➻ *JAWABAN* : ${anu.result.jawaban}`
                     setTimeout( () => {
-                    nayla.sendMessage(from, anu1, image,{caption: 'JAWAB BRO... WAKTU 60 DETIK', quoted: nay1})
+                    nayla.sendMessage(from, anu1, image,{caption: 'JAWAB BRO... WAKTU 60  Segundos ', quoted: nay1})
                     }, 1)
                     setTimeout( () => {
-                    costum('50 DETIK LAGI', text, tescuk, cr)
+                    costum('50  Segundos  LAGI', text, tescuk, cr)
                     }, 10000)                                                                                                                                   
                     setTimeout( () => {
-                    costum('40 DETIK LAGI', text, tescuk, cr)
+                    costum('40  Segundos  LAGI', text, tescuk, cr)
                     }, 20000)    
                     setTimeout( () => {
-                    costum('30 DETIK LAGI', text, tescuk, cr)
+                    costum('30  Segundos  LAGI', text, tescuk, cr)
                     }, 30000)    
                     setTimeout( () => {
-                    costum('20 DETIK LAGI', text, tescuk, cr)
+                    costum('20  Segundos  LAGI', text, tescuk, cr)
                     }, 40000)                                       
                     setTimeout( () => {
-                    costum('10 DETIK LAGI', text, tescuk, cr)
+                    costum('10  Segundos  LAGI', text, tescuk, cr)
                     }, 50000)                                                                                                                                                     
                     setTimeout( () => {
                     nayla.sendMessage(from, anu2, text,{quoted: nay1})                   
@@ -680,7 +681,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 /*====================================================[ CASE BY NAYLA ]==============================================================*/                    	 
                                          
                     case 'neko':
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                     anu = await fetchJson(`https://videfikri.com/api/anime/neko`)
                     anu1 = await getBuffer(anu.result.url_gbr)
                     nayla.sendMessage(from, anu1, image, {caption: `nihh kack`, quoted: nay1})
@@ -688,8 +689,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     case 'quotesnime':
                     anu = await fetchJson(`https://videfikri.com/api/anime/randomquoteanime`)
                     anu1 = `➻ *ANIME* : ${anu.result.anime}\n`
-                    anu1 += `➻ *KARAKTER* : ${anu.result.character}\n`
-                    anu1 += `➻ *QUOTES* : ${anu.result.quotes}\n`
+                    anu1 += `➻ *PERSONAJE* : ${anu.result.character}\n`
+                    anu1 += `➻ *CITAS* : ${anu.result.quotes}\n`
                     nayla.sendMessage(from, anu1, text, {quoted: nay1})
                     break
                     
@@ -731,19 +732,19 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    anu = await fetchJson(`https://videfikri.com/api/wikieng/?query=${body.slice(8)}`)   
                    anu1 = 'WIKI SOAL EN :\n'
                    for (var x of anu.result) {
-                   anu1 = `➻ *JUDUL* : ${x.title}\n`
-                   anu1 += `➻ *PAGEID* : ${x.pageid}\n`
-                   anu1 += `➻ *ULASAN* : ${x.desc}\n`
+                   anu1 = `➻ *TÍTULO* : ${x.title}\n`
+                   anu1 += `➻ *ID DE PÁGINA* : ${x.pageid}\n`
+                   anu1 += `➻ *REVISIÓN* : ${x.desc}\n`
                    }
                    nayla.sendMessage(from, anu1, text,{quoted: nay1})
                    break   
                    case 'covidid':
                    anu = await fetchJson(`https://videfikri.com/api/covidindo/`)
-                   anu1 = `➻ *NEGARA* : ${anu.result.country}\n`
-                   anu1 += `➻ *POSITIF* : ${anu.result.positif}\n`
-                   anu1 += `➻ *SEMBUH* : ${anu.result.sembuh}\n`
-                   anu1 += `➻ *MENINGGAL* : ${anu.result.meninggal}\n`
-                   anu1 += `➻ *RAWAT* : ${anu.result.dalam_perawatan}\n`
+                   anu1 = `➻ *PAÍS* : ${anu.result.country}\n`
+                   anu1 += `➻ *POSITIVO* : ${anu.result.positif}\n`
+                   anu1 += `➻ *CURAR* : ${anu.result.sembuh}\n`
+                   anu1 += `➻ *FALLECIDO* : ${anu.result.meninggal}\n`
+                   anu1 += `➻ *CUIDADO* : ${anu.result.dalam_perawatan}\n`
                    reply(anu1)
                    break
                    case 'kbbi':
@@ -781,11 +782,11 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    if (args.length < 1) return reply('MASUKKAN NAMA NABI')
                    anu = await fetchJson(`https://videfikri.com/api/religi/kisahnabi/?nabi=${body.slice(10)}`)   
                    anu2 = await getBuffer(anu.result.image)
-                   anu1 = `➻ *NAMA* : ${anu.result.nama}\n`
-                   anu1 += `➻ *TAHUN LAHIR* : ${anu.result.tahun_kelahiran}\n`
-                   anu1 += `➻ *USIA* : ${anu.result.usia}\n`
-                   anu1 += `➻ *TEMPAT LAHIR* : ${anu.result.tempat_lahir}\n`
-                   anu1 += `➻ *ULASAN* : ${anu.result.description}\n`                    
+                   anu1 = `➻ *NOMBRE* : ${anu.result.nama}\n`
+                   anu1 += `➻ *AÑO LAHIR* : ${anu.result.tahun_kelahiran}\n`
+                   anu1 += `➻ *EDAD* : ${anu.result.usia}\n`
+                   anu1 += `➻ *EL LUGAR LAHIR* : ${anu.result.tempat_lahir}\n`
+                   anu1 += `➻ *REVISIÓN* : ${anu.result.description}\n`                    
                    nayla.sendMessage(from, anu2, image,{caption: anu1, quoted: nay1}).catch(e => {
 	               nayz(nyz.error(prefix, command))
                    console.log(e)
@@ -796,8 +797,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 /*====================================================[ CASE BY NAYLA ]==============================================================*/                    	                                          
                     
                    case '8bit':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} kamu&aku*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} kamu&aku*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    var F = body.slice(6)
 				   var F1 = F.split("&")[0];
 				   var F2 = F.split("&")[1]
@@ -808,8 +809,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break
                    case 'google':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} kamu & aku & dia*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} kamu & aku & dia*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    var F = body.slice(8)
 				   var F1 = F.split("&")[0];
 				   var F2 = F.split("&")[1]
@@ -821,8 +822,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break 
                    case 'fire':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(6)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/crossfirelogo/?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -831,8 +832,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break 
                    case 'burn':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(6)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/burnpaper/?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -841,8 +842,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break 
                    case 'battle':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot & whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot & whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    var F = body.slice(8)
 				   var F1 = F.split("&")[0];
 				   var F2 = F.split("&")[1]				    
@@ -853,8 +854,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break 
                    case 'mug':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(5)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/candlemug/?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -863,43 +864,43 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break 
                     case 'love':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(6)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/lovemsg/?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}) 
                    break 
                    case 'mug1':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(6)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/mugflower?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}) 
                    break 
                    case 'naruto':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(8)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/narutobanner?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}) 
                    break 
                    case 'glass':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(7)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/paperonglass?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}) 
                    break 
                    case 'romance':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(9)				    
                    anu = await getBuffer(`hthttps://videfikri.com/api/textmaker/romancetext?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}) 
                    break 
                    case 'shadow':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(8)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/shadowtext?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -908,8 +909,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break 
                    case 'tiktok':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot & whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot & whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    var F = body.slice(8)
 				   var F1 = F.split("&")[0];
 				   var F2 = F.split("&")[1]				    
@@ -920,8 +921,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break
                    case 'coffe':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(7)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/coffeecup?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -930,8 +931,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break  
                    case 'coffe1':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(8)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/coffeecup2?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -940,8 +941,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break
                    case 'neon':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(6)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/glowingneon?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -950,8 +951,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break  
                    case 'pubg':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot & whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot & whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    var F = body.slice(6)
 				   var F1 = F.split("&")[0];
 				   var F2 = F.split("&")[1]				    
@@ -962,8 +963,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break
                    case 'water':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(7)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/underwater?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -972,8 +973,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break 
                    case 'silk':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot & whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot & whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    var F = body.slice(6)
 				   var F1 = F.split("&")[0];
 				   var F2 = F.split("&")[1]				    
@@ -984,8 +985,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break
                    case 'potter':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(8)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/hpotter?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -994,8 +995,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break
                    case 'candy':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(7)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/sweetcandy?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -1004,8 +1005,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break                     
                    case 'block':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(7)				    
                    anu = await getBuffer(`https://videfikri.com/api/textmaker/woodblock?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -1021,22 +1022,22 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 /*====================================================[ CASE BY NAYLA ]==============================================================*/                    	                                          
                     
                     case 'artinama':
-                    if (args.length < 1) return reply('MASUKKAN NAMA')
+                    if (args.length < 1) return reply('INGRESE SU NOMBRE')
                     F = body.slice(10)
                     anu = await fetchJson(`https://videfikri.com/api/primbon/artinama/?nama=${F}`)
-                    anu1 = `➻ *ARTI* : ${anu.result.arti}\n`
-                    anu1 += `➻ *ULASAN* : ${anu.result.desk}\n`
+                    anu1 = `➻ *SIGNIFICADO* : ${anu.result.arti}\n`
+                    anu1 += `➻ *REVISIÓN* : ${anu.result.desk}\n`
                     reply(anu1)
                     break
                     case 'artimimpi':
-                    if (args.length < 1) return reply('MASUKKAN MIMPI MU')
+                    if (args.length < 1) return reply('INTRODUZCA SU SUEÑO')
                     F = body.slice(11)
                     anu = await fetchJson(`https://videfikri.com/api/primbon/artimimpi/?mimpi=${F}`)
                     anu1 = `➻ *ARTI* : ${anu.result.artimimpi}\n`
                     reply(anu1)
                     break
                     case 'artijadian':
-                    if (args.length < 1) return reply('MASUKKAN tanggal&bulan&tahun')
+                    if (args.length < 1) return reply('INTRODUZCA la fecha, el mes y el año ')
                     var F = body.slice(12)
 				    var F1 = F.split("&")[0];
 				    var F2 = F.split("&")[1];
@@ -1046,14 +1047,14 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     reply(anu1)
                     break
                     case 'chord':
-                    if (args.length < 1) return reply('MASUKKAN JUDUL LAGU')  
+                    if (args.length < 1) return reply('INTRODUZCA EL TÍTULO DE UNA CANCIÓN')  
                     F = body.slice(7)
                     anu = await fetchJson(`https://videfikri.com/api/chord/?query=${F}`)
                     anu1 = `➻ *CHORD* : ${anu.result.chord}\n`
                     reply(anu1)
                     break
                     case 'lirik':
-                    if (args.length < 1) return reply('MASUKKAN JUDUL LAGU')  
+                    if (args.length < 1) return reply('INTRODUZCA EL TÍTULO DE UNA CANCIÓN')  
                     F = body.slice(7)
                     anu = await fetchJson(`https://videfikri.com/api/liriklagu/?query=${F}`)
                     anu1 = `➻ *ARTIS* : ${anu.result.artist}\n`
@@ -1070,10 +1071,10 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 /*====================================================[ API?? JOJO API ]==============================================================*/                  	    
 /*====================================================[ CASE BY NAYLA ]==============================================================*/                    	                                          
                    case 'randomwaifu':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/waifu`)
                    anu1 = await getBuffer(anu.image)
-                   anu2 = `➻ *NAMA* : ${anu.name}\n`
+                   anu2 = `➻ *NOMBRE* : ${anu.name}\n`
                    anu2 += `➻ *DESC* : ${anu.desc}\n`
                    nayla.sendMessage(from, anu1, image, {caption: anu2, quoted: nay1}).catch(e => {
 	               nayz(nyz.error(prefix, command))
@@ -1081,7 +1082,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               })
                    break
                    case 'randomwaifu1':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)  
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)  
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/waifu2`)
                    anu1 = await getBuffer(anu.img)                    
                    nayla.sendMessage(from, anu1, image, {quoted: nay1}).catch(e => {
@@ -1090,7 +1091,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               })
                    break
                    case 'neko1':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/nekonime`)
                    anu1 = await getBuffer(anu.result)
                    nayla.sendMessage(from, anu1, image, {caption: `nih kack`, quoted: nay1}).catch(e => {
@@ -1099,14 +1100,14 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               })
                    break
                    case 'kusonime':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                    F = body.slice(10)
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/kuso?q=${F}`)
                    anu1 = `➻ *INFO* : ${anu.sinopsis}\n`
                    reply(anu1)
                    break
                    case 'renungan': 
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/renungan`)
                    anu1 = `➻ *JUDUL* : ${anu.judul}\n`
                    anu1 += `➻ *PESAN* : ${anu.pesan}\n`
@@ -1114,18 +1115,18 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    reply(anu1)
                    break
                    case 'samehadaku':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(12)
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/samehadaku?q=${F}`)
                    anu2 = await getBuffer(anu.thumb)
-                   anu1 = `➻ *JUDUL* : ${anu.title}\n`
-                   anu1 += `➻ *LINK* : ${anu.link}\n`
-                   anu1 += `➻ *DESK* : ${anu.desc}\n`
+                   anu1 = `➻ *TÍTULO* : ${anu.title}\n`
+                   anu1 += `➻ *ENLACE* : ${anu.link}\n`
+                   anu1 += `➻ *ESCRITORIO* : ${anu.desc}\n`
                    nayla.sendMessage(from, anu2, image, {caption: anu1, quoted: nay })
                    break
                    case 'neon1':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(7)				    
                    anu = await getBuffer(`https://docs-jojo.herokuapp.com/api/neon_light?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -1134,8 +1135,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break  
                    case 'text3d':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(8)				    
                    anu = await getBuffer(`https://docs-jojo.herokuapp.com/api/text3d?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -1144,8 +1145,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break                   
                    case 'galaxy':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(8)				    
                    anu = await getBuffer(`https://docs-jojo.herokuapp.com/api/galaxywp?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -1154,8 +1155,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break
                    case 'gaming':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(8)				    
                    anu = await getBuffer(`https://docs-jojo.herokuapp.com/api/gaming?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -1164,8 +1165,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break
                    case 'colors':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(8)				    
                    anu = await getBuffer(`https://docs-jojo.herokuapp.com/api/watercolor?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}).catch(e => {
@@ -1174,8 +1175,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               }) 
                    break
                    case 'kling':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    var F = body.slice(7)
 				   var F1 = F.split("&")[0];
 				   var F2 = F.split("&")[1];    				    
@@ -1195,15 +1196,15 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    break
                    case 'jadwaltv':
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/jadwaltvnow`)
-                   anu1 = `➻ *JAM* : ${anu.result.jam}\n`
-                   anu1 += `➻ *JADWAL* : ${anu.result.jadwalTV}\n`
+                   anu1 = `➻ *HORA* : ${anu.result.jam}\n`
+                   anu1 += `➻ *CALENDARIO* : ${anu.result.jadwalTV}\n`
                    reply(anu1)
                    break
                    case 'tvjadwal':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} gtv*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} gtv*`)
                    F = body.slice(10)
                    anu1 = await fetchJson(`https://docs-jojo.herokuapp.com/api/jadwaltv?ch=${F}`)
-                   anu1 = `➻ *JAM* : ${anu.result}`
+                   anu1 = `➻ *HORA* : ${anu.result}`
                    reply(anu1)
                    break
                    case 'fml': 
@@ -1213,7 +1214,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    break
                    case 'cinta': 
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/katacinta`)
-                   anu1 = `➻ *KATA CINTA* : ${anu.result}`
+                   anu1 = `➻ *PALABRAS DE AMOR* : ${anu.result}`
                    reply(anu1)
                    break                                                                            
                    case 'twich': 
@@ -1222,7 +1223,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    reply(anu1)
                    break
                    case 'loli':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://docs-jojo.herokuapp.com/api/randomloli`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}).catch(e => {
 	               nayz(nyz.error(prefix, command))
@@ -1230,9 +1231,9 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               })
                    break
                    case 'randomhusbu':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/husbuando`)
-                   anu1 = `➻ *NAMA* : ${anu.waifu}`
+                   anu1 = `➻ *NOMBRE* : ${anu.waifu}`
                    anu2 = await getBuffer(anu.image)
                    nayla.sendMessage(from, anu2, image, {caption: anu1, quoted: nay1}).catch(e => {
 	               nayz(nyz.error(prefix, command))
@@ -1241,20 +1242,20 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    break
                    case 'fake':
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/fake_identity`)
-                   anu1 = `➻ *NAMA* : ${anu.name}\n`
-                   anu1 += `➻ *GENDER* : ${anu.gender}\n` 
-                   anu1 += `➻ *AGE* : ${anu.age}\n`
-                   anu1 += `➻ *BIRTDAY* : ${anu.birtday}\n`
-                   anu1 += `➻ *BACHELOR* : ${anu.Bachelor}\n`
-                   anu1 += `➻ *ADDRESA* : ${anu.address}\n`
-                   anu1 += `➻ *CODE* : ${anu.zip_code}\n`
-                   anu1 += `➻ *STATE* : ${anu.state}\n`
-                   anu1 += `➻ *COUNTRY* : ${anu.country}\n`
+                   anu1 = `➻ *NOMBRE* : ${anu.name}\n`
+                   anu1 += `➻ *GÉNERO* : ${anu.gender}\n` 
+                   anu1 += `➻ *EDAD* : ${anu.age}\n`
+                   anu1 += `➻ *CUMPLEAÑOS* : ${anu.birtday}\n`
+                   anu1 += `➻ *SOLTERO* : ${anu.Bachelor}\n`
+                   anu1 += `➻ *HABLA A* : ${anu.address}\n`
+                   anu1 += `➻ *CÓDIGO* : ${anu.zip_code}\n`
+                   anu1 += `➻ *EXPRESAR* : ${anu.state}\n`
+                   anu1 += `➻ *PAÍS* : ${anu.country}\n`
                    anu1 += `➻ *EMAIL* : ${anu.email}\n`
-                   anu1 += `➻ *PASS* : ${anu.password}\n` 
-                   anu1 += `➻ *PHONE* : ${anu.phone}\n` 
-                   anu1 += `➻ *CARD* : ${anu.card}\n`
-                   anu1 += `➻ *CODE* : ${anu.code}\n`
+                   anu1 += `➻ *APROBAR* : ${anu.password}\n` 
+                   anu1 += `➻ *TELÉFONO* : ${anu.phone}\n` 
+                   anu1 += `➻ *TARJETA* : ${anu.card}\n`
+                   anu1 += `➻ *CÓDIGO* : ${anu.code}\n`
                    anu1 += `➻ *DATE* : ${anu.date}\n`
                    anu1 += `➻ *PIN* : ${anu.pin_code}\n`
                    anu1 += `➻ *WEIGHT* : ${anu.weight}\n` 
@@ -1264,8 +1265,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    reply(anu1)
                    break
                    case 'pin':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} https://link*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} https://link*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(11)
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/pinterest?url=${F}`)
                    anu1 = await getBuffer(anu.result)
@@ -1275,8 +1276,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               })
                    break
                    case 'qrcode':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} halo sayang*`)  
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} halo sayang*`)  
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(8)
                    anu = await getBuffer(`https://docs-jojo.herokuapp.com/api/qrcode?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}).catch(e => {
@@ -1285,7 +1286,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               })
                    break
                    case 'resepmasakan':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bakso*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bakso*`)
                    F = body.slice(14)
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/resep?q=${F}`)
                    anu1 = await getBuffer(anu.img)
@@ -1298,8 +1299,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               })
                    break
                    case 'barcode':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} halo sayang*`)  
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} halo sayang*`)  
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(9)
                    anu = await getBuffer(`https://docs-jojo.herokuapp.com/api/barcode_maker?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}).catch(e => {
@@ -1322,7 +1323,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    reply(anu1)
                    break
                    case 'anime':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://docs-jojo.herokuapp.com/api/random_baguette`)
                    nayla.sendMessage(from, anu, image, {quoted: nay1}).catch(e => {
 	               nayz(nyz.error(prefix, command))
@@ -1330,7 +1331,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               })
                    break
                    case 'anime1':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://docs-jojo.herokuapp.com/api/random_dva`)
                    nayla.sendMessage(from, anu, image, {quoted: nay1}).catch(e => {
 	               nayz(nyz.error(prefix, command))
@@ -1338,7 +1339,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 	               })
                    break
                    case 'yuri':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://docs-jojo.herokuapp.com/api/random_yuri`)
                    nayla.sendMessage(from, anu, image, {quoted: nay1}).catch(e => {
 	               nayz(nyz.error(prefix, command))
@@ -1351,8 +1352,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    reply(anu1)
                    break
                    case 'jadwalsholat':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} makassar*`)  
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} makassar*`)  
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(14)
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/jadwalshalat?daerah=${F}`)                   
                    anu1 = `➻ *IMSYAK* : ${anu.Imsyak}\n`
@@ -1370,8 +1371,8 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    reply(anu1)
                    break 
                    case 'cuaca': 
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} makassar*`)  
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} makassar*`)  
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(7)
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/cuaca?q=${F}`)
                    anu1 = `➻ *TEMPAT* : ${anu.result.tempat}\n`
@@ -1384,7 +1385,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    reply(anu1)
                    break 
                    case 'namaninja':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla*`)  
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla*`)  
                    F = body.slice(11)
                    anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/ninja_name?name=${F}`)
                    anu1 = `➻ *NAMA* : ${anu.your_name}\n`
@@ -1399,20 +1400,20 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 
                                                                                                                                                                                                                  
                    case 'stalkig':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} jokowi*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} jokowi*`)
                    F = body.slice(9)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://api.zeks.xyz/api/igstalk?username=${F}&apikey=apivinz`)
                    anu1 = await getBuffer(anu.profile_pic)
-                   anu2 = `➻ *NAMA* : ${anu.username}\n`
-                   anu2 += `➻ *FULLNAME* : ${anu.fullname}\n`
-                   anu2 += `➻ *FOLLOWERS* : ${anu.follower}\n`
-                   anu2 += `➻ *FOLLOWING* : ${anu.following}\n`
+                   anu2 = `➻ *NOMBRE* : ${anu.username}\n`
+                   anu2 += `➻ *NOMBRE COMPLETO* : ${anu.fullname}\n`
+                   anu2 += `➻ *SEGUIDORES* : ${anu.follower}\n`
+                   anu2 += `➻ *SIGUIENTE* : ${anu.following}\n`
                    anu2 += `➻ *VERIFY* : ${anu.is_verified}\n`
-                   anu2 += `➻ *BISNIS* : ${anu.is_bussiness}\n`
-                   anu2 += `➻ *PRIVATE* : ${anu.is_private}\n`
+                   anu2 += `➻ *NEGOCIO* : ${anu.is_bussiness}\n`
+                   anu2 += `➻ *PRIVADO* : ${anu.is_private}\n`
                    anu2 += `➻ *BIO* : ${anu.bio}\n`
-                   anu2 += `➻ *SOURCE* : ${anu.source}\n`
+                   anu2 += `➻ *FUENTE* : ${anu.source}\n`
                    nayla.sendMessage(from, anu1, image, {caption: anu2, quoted: nay1}).catch(e => {
 	               nayz(nyz.error(prefix, command))
                    console.log(e)
@@ -1431,19 +1432,19 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    reply(anu1)
                    break
                    case 'estetikpic':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://api.zeks.xyz/api/estetikpic?apikey=apivinz`)
                    anu1 = await getBuffer(anu.result.result)
                    nayla.sendMessage(from, anu1, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'memeindo':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://api.zeks.xyz/api/memeindo?apikey=apivinz`)
                    anu1 = await getBuffer(anu.result)
                    nayla.sendMessage(from, anu1, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'darkjokes':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://api.zeks.xyz/api/darkjokes?apikey=apivinz`)
                    anu1 = await getBuffer(anu.result)
                    nayla.sendMessage(from, anu1, image, {caption: `nihh kack`, quoted: nay1})
@@ -1457,127 +1458,127 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    reply(anu1)
                    break
                    case 'tahta':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla*`)
                    F = body.slice(7)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api.zeks.xyz/api/hartatahta?text=${F}&apikey=apivinz`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'neon2':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla*`)
                    F = body.slice(7)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api.zeks.xyz/api/bneon?apikey=apivinz&text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break                    
                    case 'wall':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla*`)
                    F = body.slice(6)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api.zeks.xyz/api/breakwall?apikey=apivinz&text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break   
                    case 'wolf':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla*`)
                    F = body.slice(6)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api.zeks.xyz/api/wolflogo?apikey=apivinz&text1=rimurubotz&text2=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break 
                    case 'tfire':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla*`)
                    F = body.slice(7)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api.zeks.xyz/api/tfire?text=${F}&apikey=apivinz`)                   
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break                
                    case 'ytgold':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla*`)
                    F = body.slice(8)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api.zeks.xyz/api/gplaybutton?text=${F}&apikey=apivinz`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'ytsilver':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla*`)
                    F = body.slice(10)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api.zeks.xyz/api/splaybutton?text=${F}&apikey=apivinz`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 't3d':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla*`)
                    F = body.slice(5)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api.zeks.xyz/api/text3dbox?apikey=apivinz&text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'logoa':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla&chan*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla&chan*`)
                    var F = body.slice(7)
 				   var F1 = F.split("&")[0];
 				   var F2 = F.split("&")[1]; 
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api.zeks.xyz/api/logoaveng?text1=${F1}&text2=${F2}&apikey=apivinz`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'pornhub':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla&chan*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla&chan*`)
                    var F = body.slice(9)
 				   var F1 = F.split("&")[0];
 				   var F2 = F.split("&")[1]; 
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api.zeks.xyz/api/phlogo?text1=${F1}&text2=${F2}&apikey=apivinz`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'marvel':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla&chan*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla&chan*`)
                    var F = body.slice(8)
 				   var F1 = F.split("&")[0];
 				   var F2 = F.split("&")[1]; 
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api.zeks.xyz/api/marvellogo?text1=${F1}&text2=${F2}&apikey=apivinz`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'leavest':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla*`)
                    F = body.slice(9)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api.zeks.xyz/api/leavest?text=${F}&apikey=apivinz`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break                    
                    case 'phcoment':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla&chan*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla&chan*`)
                    var F = body.slice(10)
 				   var F1 = F.split("&")[0];
 				   var F2 = F.split("&")[1]; 
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api.zeks.xyz/api/phub?apikey=apivinz&img=https://1.bp.blogspot.com/-x8KhcOBG-yw/XiU4pi1yWVI/AAAAAAAADBA/gK8tsLyc1lQ808A348IKzDCjf6fUBKONwCLcBGAsYHQ/s1600/cara%2Bbuat%2Bfoto%2Bprofil%2Bdi%2Bwhatsapp%2Bmenjadi%2Bunik.jpg&username=${F1}&msg=${F2}`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'nulis':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla*`)
                    F = body.slice(7)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api.zeks.xyz/api/nulis?text=${F}&apikey=apivinz`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'shortener':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command}https://link*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command}https://link*`)
                    F = body.slice(11)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)                   
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)                   
                    anu = await fetchJson(`https://api.zeks.xyz/api/sid-shortener?apikey=apivinz&url=${F}`)
-                   anu1 = `➻ *SHORT* : ${anu.short}\n`
-                   anu1 += `➻ *LONG* : ${anu.long}\n`
+                   anu1 = `➻ *ACORTADO* : ${anu.short}\n`
+                   anu1 += `➻ *LARGO* : ${anu.long}\n`
                    anu1 += `➻ *DATE* : ${anu.created_at.date}\n`
                    anu1 += `➻ *TYPE* : ${anu.created_at.timezone_type}\n`
                    anu1 += `➻ *ZONA* : ${anu.created_at.timezone}\n`
                    reply(anu1)
                    break 
                    case 'urlshort':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command}https://link*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command}https://link*`)
                    F = body.slice(10)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)                                      
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)                                      
                    anu = await fetchJson(`https://api.zeks.xyz/api/urlshort-all?apikey=apivinz&url=${F}`)
                    anu1 = `➻ *SATU* : ${anu.result_1}\n`
                    anu1 += `➻ *DUA* : ${anu.result_2}\n`
@@ -1588,50 +1589,50 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 /*===================================================[ API?? RANDOM API ]==============================================================*/                  	    
 /*====================================================[ CASE BY NAYLA ]==============================================================*/                    	                                          
                    case 'fox':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://some-random-api.ml/img/fox`)
                    anu1 = await getBuffer(anu.link)
                    nayla.sendMessage(from, anu1, image, {caption: `nih kak mirip kamu`, quoted: nay1})
                    break
                    case 'dog':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://some-random-api.ml/img/dog`)
                    anu1 = await getBuffer(anu.link)
                    nayla.sendMessage(from, anu1, image, {caption: `nih kak mirip kamu`, quoted: nay1})
                    break
                    case 'cat':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://some-random-api.ml/img/cat`)
                    anu1 = await getBuffer(anu.link)
                    nayla.sendMessage(from, anu1, image, {caption: `nih kak mirip kamu`, quoted: nay1})
                    break
                    case 'panda':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://some-random-api.ml/img/panda`)
                    anu1 = await getBuffer(anu.link)
                    nayla.sendMessage(from, anu1, image, {caption: `nih kak mirip kamu`, quoted: nay1})
                    break
                    case 'panda1':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://some-random-api.ml/img/red_panda`)
                    anu1 = await getBuffer(anu.link)
                    nayla.sendMessage(from, anu1, image, {caption: `nih kak mirip kamu`, quoted: nay1})
                    break
                    case 'bird':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://some-random-api.ml/img/birb`)
                    anu1 = await getBuffer(anu.link)
                    nayla.sendMessage(from, anu1, image, {caption: `nih kak mirip kamu`, quoted: nay1})
                    break
                    case 'koala':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://some-random-api.ml/img/koala`)
                    anu1 = await getBuffer(anu.link)
                    nayla.sendMessage(from, anu1, image, {caption: `nih kak mirip kamu`, quoted: nay1})
                    break
                    case 'meme':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
-                   anu = await fetchJson(`https://some-random-api.ml/meme`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
+                   anu = await fetchJson(`https://meme-api.herokuapp.com/gimme/memesmexico`)
                    anu1 = await getBuffer(anu.image)
                    nayla.sendMessage(from, anu1, image, {caption: `nih kak`, quoted: nay1})
                    break
@@ -1775,7 +1776,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 				   slot += `║│➻ ${slot11} ║ ${slot22} ║ ${slot33}\n`
 				   slot += `║│➻ ${slot44} ║ ${slot55} ║ ${slot66} <====\n`
 				   slot += `║│➻ ${slot77} ║ ${slot88} ║ ${slot99}	\n`			  				    
-				   slot += `║│➻ GAME : SLOT [ *NEW* ] <==>\n`
+				   slot += `║│➻ JUEGO : SLOT [ *NEW* ] <==>\n`
 				   slot += `║╰───────────────────\n`
 				   slot += `╚════════════════════\n`
 				   nayla.sendMessage(from, slot, text, {quoted: nay})
@@ -1786,7 +1787,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 /*====================================================[ CASE BY NAYLA ]==============================================================*/                    	                                          
                                                                                                                                                                                                                                                                                                                                                           
                    case 'wallteknologi': case 'walteknologi':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://alpin-api-2021.herokuapp.com/api/wallpaper/teknologi?apikey=alpin1`)
                    anu1 = JSON.parse(JSON.stringify(anu.result));
                    anu2=  anu1[Math.floor(Math.random() * anu1.length)];
@@ -1794,7 +1795,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    nayla.sendMessage(from, anu3, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'wallpegunungan': case 'walpegunungan':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://alpin-api-2021.herokuapp.com/api/wallpaper/pegunungan?apikey=alpin1`)
                    anu1 = JSON.parse(JSON.stringify(anu.result));
                    anu2=  anu1[Math.floor(Math.random() * anu1.length)];
@@ -1802,7 +1803,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    nayla.sendMessage(from, anu3, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'wallmuslim': case 'walmuslim':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://alpin-api-2021.herokuapp.com/api/wallpaper/muslim?apikey=alpin1`)
                    anu1 = JSON.parse(JSON.stringify(anu.result));
                    anu2=  anu1[Math.floor(Math.random() * anu1.length)];
@@ -1810,7 +1811,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    nayla.sendMessage(from, anu3, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'wallcyber': case 'walcyber':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://alpin-api-2021.herokuapp.com/api/wallpaper/cyberspace?apikey=alpin1`)
                    anu1 = JSON.parse(JSON.stringify(anu.result));
                    anu2=  anu1[Math.floor(Math.random() * anu1.length)];
@@ -1818,7 +1819,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    nayla.sendMessage(from, anu3, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'wallhacker': case 'walhacker':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://alpin-api-2021.herokuapp.com/api/wallpaper/programming?apikey=alpin1`)
                    anu1 = JSON.parse(JSON.stringify(anu.result));
                    anu2=  anu1[Math.floor(Math.random() * anu1.length)];
@@ -1836,62 +1837,62 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    reply(anu1)
                    break
                    case 'wallpaper': case 'walpaper':
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await fetchJson(`https://alpin-api-2021.herokuapp.com/api/random/wallpaper?apikey=alpin1`)
                    anu1 = await getBuffer(anu.result.url)
                    nayla.sendMessage(from, anu1, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'imo': 
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(5)			                  
                    anu = await fetchJson(`https://alpin-api-2021.herokuapp.com/api/textmaker/lmo?text=${F}&theme=bintang&apikey=alpin1`)
                    anu1 = await getBuffer(anu.result.url)
                    nayla.sendMessage(from, anu1, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'scary': 
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(7)			                  
                    anu = await fetchJson(`https://alpin-api-2021.herokuapp.com/api/textmaker/yamaker?text=${F}&theme=scary-njir&apikey=alpin1`)
                    anu1 = await getBuffer(anu.result.url)
                    nayla.sendMessage(from, anu1, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'metal': 
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(7)			                  
                    anu = await fetchJson(`https://alpin-api-2021.herokuapp.com/api/textmaker/yamaker?text=${F}&theme=metal-epek&apikey=alpin1`)
                    anu1 = await getBuffer(anu.result.url)
                    nayla.sendMessage(from, anu1, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'metal1': 
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(8)			                  
                    anu = await fetchJson(`https://alpin-api-2021.herokuapp.com/api/textmaker/noti?text=${F}&theme=metal-wolf&apikey=alpin1`)
                    anu1 = await getBuffer(anu.result.url)
                    nayla.sendMessage(from, anu1, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'daun': 
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(6)			                  
                    anu = await fetchJson(`https://alpin-api-2021.herokuapp.com/api/textmaker/noti?text=${F}&theme=daun-kaki&apikey=alpin1`)
                    anu1 = await getBuffer(anu.result.url)
                    nayla.sendMessage(from, anu1, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case '3dwhite': 
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(9)			                  
                    anu = await fetchJson(`https://alpin-api-2021.herokuapp.com/api/textmaker/neon9?text=${F}&theme=3dwhite&apikey=alpin1`)
                    anu1 = await getBuffer(anu.result.url)
                    nayla.sendMessage(from, anu1, image, {caption: `nihh kack`, quoted: nay1})
                    break
                    case 'robot': 
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    F = body.slice(7)			                  
                    anu = await fetchJson(`https://alpin-api-2021.herokuapp.com/api/maker/special/transformer?text=${F}&apikey=alpin11`)
                    anu1 = await getBuffer(anu.result.results)
@@ -1899,26 +1900,26 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    break
                    case 'caklontong':
                    anu = await fetchJson(`https://alpin-api-2021.herokuapp.com/api/kuis/caklontong?apikey=alpin1`)                 
-                   anu1 = `➻ *SOAL* : ${anu.result.soal}\nJAWAB CUYY WAKTU 60 DETIK`
+                   anu1 = `➻ *SOAL* : ${anu.result.soal}\nJAWAB CUYY WAKTU 60  Segundos `
                    anu2 = `➻ *JAWABAN* : ${anu.result.jawaban}\n`
                    anu2 += `➻ *DESK* : ${anu.result.deskripsi}`
                    setTimeout( () => {
                    nayla.sendMessage(from, anu1, text,{quoted: nay1})
                    }, 1)
                    setTimeout( () => {
-                   costum('50 DETIK LAGI', text, tescuk, cr)
+                   costum('50  Segundos  LAGI', text, tescuk, cr)
                    }, 10000)                                                                                                                                   
                    setTimeout( () => {
-                   costum('40 DETIK LAGI', text, tescuk, cr)
+                   costum('40  Segundos  LAGI', text, tescuk, cr)
                    }, 20000)    
                    setTimeout( () => {
-                   costum('30 DETIK LAGI', text, tescuk, cr)
+                   costum('30  Segundos  LAGI', text, tescuk, cr)
                    }, 30000)    
                    setTimeout( () => {
-                   costum('20 DETIK LAGI', text, tescuk, cr)
+                   costum('20  Segundos  LAGI', text, tescuk, cr)
                    }, 40000)                                       
                    setTimeout( () => {
-                   costum('10 DETIK LAGI', text, tescuk, cr)
+                   costum('10  Segundos  LAGI', text, tescuk, cr)
                    }, 50000)                                                                                                                                                     
                    setTimeout( () => {
                    nayla.sendMessage(from, anu2, text,{quoted: nay1})                   
@@ -1930,22 +1931,22 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 /*====================================================[ CASE BY NAYLA ]==============================================================*/                    	                                          
                    
                    case 'ssweb':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} https://google.com*`)                  
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} https://google.com*`)                  
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`http://anu-team.herokuapp.com/api/ssweb?url=${body.slice(7)}`)
                    nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay1})
                    break
                    case 'smoke':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla*`)
                    F = body.slice(7)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api-rull.herokuapp.com/api/Photooxy/smoke?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break 
                    case 'rainbow':
-                   if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nayla*`)
+                   if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nayla*`)
                    F = body.slice(9)
-                   costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                   costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                    anu = await getBuffer(`https://api-rull.herokuapp.com/api/Photooxy/rainbowshine?text=${F}`)
                    nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1})
                    break                                      
@@ -1957,7 +1958,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     
                     
                     case 'toimg': 
-					costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+					costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
 					encmedia = JSON.parse(JSON.stringify(nay).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					media = await nayla.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.png')
@@ -1981,7 +1982,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 		         	case 'cekchat':
 		  	    	nayla.updatePresence(from, Presence.composing)
 			    	var itsme = `0@s.whatsapp.net`
-			    	var split = `ALL CHAT BOTZ`
+			    	var split = `TODOS LOS CHATS`
 		     		var selepbot =         {
 					contextInfo:   {
 					participant: itsme,
@@ -2007,9 +2008,9 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 			    	nayla.sendMessage(from, `Sukses Menambahkan Sticker kedalam database\nSilahkan Cek dengan cara ${prefix}liststicker`, MessageType.text, { quoted: nay1})
       				break
 		        	case 'addvn':
-			    	if (!isQuotedAudio) return reply('Reply vnnya blokk!')
+			    	if (!isQuotedAudio) return reply('Responder vn blokk!')
 			    	svst = body.slice(7)
-		    		if (!svst) return reply('Nama audionya apa su?')
+		    		if (!svst) return reply('¿Cuál es el nombre del audio??')
 			    	boij = JSON.parse(JSON.stringify(nay).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
 			    	delb = await nayla.downloadMediaMessage(boij)
 			    	audionye.push(`${svst}`)
@@ -2018,14 +2019,14 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 			     	nayla.sendMessage(from, `Sukses Menambahkan Vn ke dalam database\nSilahkann Cek dengan cara ${prefix}listvn`, MessageType.text, { quoted: nay1}) 
 			      	break
 		         	case 'getvn':
-			        if (args.length < 1) return reply('Masukan nama yang terdaftar di list vn')
+			        if (args.length < 1) return reply('Ingrese el nombre registrado en list vn')
 			     	namastc = body.slice(7)
 				    buffer = fs.readFileSync(`./src/audio/${namastc}.mp3`)
 			    	nayla.sendMessage(from, buffer, audio, { mimetype: 'audio/mp4',  quoted: nay1})
 			     	break
 			        case 'getsticker':
 		        	case 'gets':
-		        	if (args.length < 1) return reply('Masukan nama yang terdaftar di list sticker')
+		        	if (args.length < 1) return reply('Ingrese el nombre registrado en list sticker')
 		      		namastc = body.slice(12)
 			     	result = fs.readFileSync(`./src/sticker/${namastc}.webp`)
 			    	nayla.sendMessage(from, result, sticker)
@@ -2050,17 +2051,17 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 		        	case 'addimage':
 		     		if (!isQuotedImage) return reply('Reply imagenya blokk!')
 			    	svst = body.slice(10)
-			    	if (!svst) return reply('Nama imagenya apa su?')
+			    	if (!svst) return reply('¿Cuál es el nombre de la imagen?')
 		     		boij = JSON.parse(JSON.stringify(nay).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
 	 	     		delb = await nayla.downloadMediaMessage(boij)
 		     		imagenye.push(`${svst}`)
 			    	fs.writeFileSync(`./src/image/${svst}.jpeg`, delb)
 			    	fs.writeFileSync('./src/image.json', JSON.stringify(imagenye))
-		      		nayla.sendMessage(from, `Sukses Menambahkan image ke dalam database\nSilahkan cek dengan cara ${prefix}listimage`, MessageType.text, { quoted: nay1})		     	 
+		      		nayla.sendMessage(from, `Imagen agregada con éxito a la base de datos\nPor favor revisa por cierto ${prefix}listimage`, MessageType.text, { quoted: nay1})		     	 
 		     		break
 		        	case 'getimage':
                     case 'getimg':
-			        if (args.length < 1) return reply('Masukan nama yang terdaftar di list image')
+			        if (args.length < 1) return reply('Ingrese el nombre registrado en la lista de imágenes')
 	      			namastc = body.slice(10)
 	      			buffer = fs.readFileSync(`./src/image/${namastc}.jpeg`)
     				nayla.sendMessage(from, buffer, image, {  quoted: nay1})
@@ -2075,15 +2076,15 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 			    	nayla.sendMessage(from, teks.trim(), extendedText, {  quoted: nay1})
 			    	break
 		        	case 'addvideo':
-			    	if (!isQuotedVideo) return reply('Reply videonya blokk!')
+			    	if (!isQuotedVideo) return reply('Responder video!')
 			    	svst = body.slice(10)
-			     	if (!svst) return reply('Nama videonya apa su?')
+			     	if (!svst) return reply('¿Cuál es el nombre del video?')
 			     	boij = JSON.parse(JSON.stringify(nay).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo
 			    	delb = await nayla.downloadMediaMessage(boij)
 			    	videonye.push(`${svst}`)
 			    	fs.writeFileSync(`./src/video/${svst}.mp4`, delb)
 			     	fs.writeFileSync('./src/video.json', JSON.stringify(videonye))
-			      	nayla.sendMessage(from, `Sukses Menambahkan Video\nCek dengan cara ${prefix}listvideo`, MessageType.text, { quoted: nay1}) 
+			      	nayla.sendMessage(from, `Adición de video exitosa\nComprobar por comando ${prefix}listvideo`, MessageType.text, { quoted: nay1}) 
 	     			break
 			        case 'getvideo':
 		    	    if (args.length < 1) return reply('Masukan nama yang terdaftar di list video')
@@ -2104,14 +2105,14 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 				    if (args.length < 1) return
 			        if (!isOwner) return reply(`lu owner?`)
                     prefix = args[0]
-                    reply(`Change Prefix To ${prefix} SUCCESS!`)					 
+                    reply(`Cambiar prefijo a ${prefix} ÉXITO!`)					 
 					break 
 					 
 					case 'settz':
 				    if (args.length < 1) return
 			        if (!isOwner) return reply(`lu owner?`)
                     tz = args[0]
-                    reply(`Change tz To ${tz} SUCCESS!`)					 
+                    reply(`Cambiar tz a ${tz} EXITO!`)					 
 					break 
                     case 'admin':
          	        case 'owner':
@@ -2137,7 +2138,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 					.on('error', function (err) {
 					console.log(`Error : ${err}`)
 					fs.unlinkSync(media)
-					costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+					costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
 					})
 					.on('end', function () {
 					console.log('Finish')
@@ -2152,7 +2153,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 					const encmedia = isQuotedVideo ? JSON.parse(JSON.stringify(nay).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : nay
 					const media = await nayla.downloadAndSaveMediaMessage(encmedia)
 					ran = getRandom('.webp')
-					costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+					costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
 					await ffmpeg(`./${media}`)
 					.inputFormat(media.split('.')[1])
 					.on('start', function (cmd) {
@@ -2162,7 +2163,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 					console.log(`Error : ${err}`)
 					fs.unlinkSync(media)
 					tipe = media.endsWith('.mp4') ? 'video' : 'gif'
-					reply(`Gagal, pada saat mengkonversi ${tipe} ke stiker`)
+					reply(`Falló, en el momento de la conversión ${tipe} ke stiker`)
 					})
 					.on('end', function () {
 					console.log('Finish')
@@ -2174,7 +2175,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 					.toFormat('webp')
 					.save(ran)
 					} else {
-					reply(`Kirim gambar dengan caption ${prefix}sticker\nDurasi Sticker Video 1-9 Detik`)
+					reply(`Kirim gambar dengan caption ${prefix}sticker\nDurasi Sticker Video 1-9  Segundos `)
 					}
 					break
                     case 'bc': 
@@ -2187,12 +2188,12 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 					for (let _ of anu) {
 					nayla.sendMessage(_.jid, buff, image, {caption: `❮ 𝙋𝙀𝙎𝘼?? 𝘽??𝙊𝘼𝘿𝘾𝘼𝙎𝙏 ❯\n\n${body.slice(4)}`})
 					}
-					reply('*SUCCESS BROADCAST* ')
+					reply('*DIFUSIÓN CON ÉXITO* ')
 					} else {
 					for (let _ of anu) {
 					sendMess(_.jid, `*「 BROADCAST BOT 」*\n\n${body.slice(4)}`)
 					}
-					reply('*SUCCESS BROADCAST* ')
+					reply('*DIFUSIÓN CON ÉXITO* ')
 					}
 					break
 					case 'clearall':
@@ -2208,7 +2209,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 				    if (!isGroup) return reply(`GRUB ONLY`) 
 				    if (!isBotGroupAdmins) return reply(`BOT BUKAN ADMIN`)
 				    linkgc = await nayla.groupInviteCode (from)
-				    yeh = `https://chat.whatsapp.com/${linkgc}\n\nlink Group *${groupName}*`
+				    yeh = `https://chat.whatsapp.com/${linkgc}\n\nlink del Grupo *${groupName}*`
 				    nayla.sendMessage(from, yeh, text, {quoted: nay1})			       
 					break
 				    case 'tagall': 
@@ -2228,7 +2229,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 				    nayla.deleteMessage(from, { id: nay.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true }) 
 				    break
 				    case 'kick':
-					if (!isGroup) return reply(`GRUP ONLY`)
+					if (!isGroup) return reply(`Solo En Grupos `)
 					if (!isGroupAdmins) return reply(`LU ADMIN??`)
 					if (!isBotGroupAdmins) return reply(`BOT BUKAN ADMIN`)
 					if (nay.message.extendedTextMessage === undefined || nay.message.extendedTextMessage === null) return reply('tag yg ingin di kick!')
@@ -2247,7 +2248,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 					}					
 					break 
 					case 'hidetag':              
-				    if (!isGroup) return reply(`GRUP ONLY`)
+				    if (!isGroup) return reply(`Solo En Grupos `)
 					if (!isGroupAdmins) return reply(`LU ADMIN??`)
 					var value = body.slice(9)
 					var group = await nayla.groupMetadata(from)
@@ -2264,17 +2265,17 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 					nayla.sendMessage(from, options, text)					 
 					break
 			    	case 'add':
-					if (!isGroup) return reply(`GRUP ONLY`)
-					if (!isGroupAdmins) return reply(`LU ADMIN??`)
-					if (!isBotGroupAdmins) return reply(`BOT BUKAN ADMIN`)
-					if (args.length < 1) return reply('Yang mau di add jin ya?')
-					if (args[0].startsWith('08')) return reply('Gunakan kode negara mas')
+					if (!isGroup) return reply(`SOLO GRUPO`)
+					if (!isGroupAdmins) return reply(` ADMIN??`)
+					if (!isBotGroupAdmins) return reply(`BOT NO ES ADMIN`)
+					if (args.length < 1) return reply('A quien quieres agregar?')
+					if (args[0].startsWith('08')) return reply('Use el código de país ')
 					try {
 					num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
 					nayla.groupAdd(from, [num])
 					} catch (e) {
 					console.log('Error :', e)
-					reply('Gagal menambahkan target, mungkin karena di private')
+					reply('No se pudo agregar el destino, tal vez porque es privado')
 					}  
 					break 
 				     
@@ -2289,11 +2290,11 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 /*====================================================[ CASE BY NAYLA ]==============================================================*/                    	 
 
                     case 'bug':
-                    if (args.length < 1) return reply(`contoh ${prefix}bug antilink`)
+                    if (args.length < 1) return reply(`Ejemplo ${prefix}bug antilink`)
                     const bug1 = body.slice(5)
-                    if (bug1.length > 300) return nayla.sendMessage(from, 'Maaf Teks Terlalu Panjang, Maksimal 300 Teks', msgType.text, {quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "caption": `*MY BOTZ NEW*`} } }})
+                    if (bug1.length > 300) return nayla.sendMessage(from, 'Lo siento, texto demasiado largo, máximo 300 texto', msgType.text, {quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "caption": `*MY BOTZ NEW*`} } }})
                     var nomor = nay.participant
-                    const bug2 = `*[LAPOR ERROR FITUR]*\nDARI ${pushname} \nNomor : @${nomor.split("@s.whatsapp.net")[0]}\nPesan : ${bug1}`
+                    const bug2 = `*[INFORMAR CARACTERÍSTICAS DE ERRORES]*\nDARI ${pushname} \nNombre : @${nomor.split("@s.whatsapp.net")[0]}\nMensaje : ${bug1}`
                     var optionsp = {
                     text: bug2,
                     contextInfo: {mentionedJid: [nomor]},
@@ -2303,11 +2304,11 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     // KALO INI JGN DI UBAH BIAR PESAN NYA
                     // JUGA MASUK KE GW. BIAR SAMA" 
                     // TANGANIN BUG PADA BOT INI
-                    nayla.sendMessage('62812874133914@s.whatsapp.net', optionsp, text, {quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "caption": `*TERIMAKASIH TELAT REPORT BUG*`} } } })
-                    reply('REPORT BUG TELAH TERSAMPAIKAN. TERIMAKASIH TELAH MELAPORKAN FITUR')                     
+                    nayla.sendMessage('12603763944 @s.whatsapp.net', optionsp, text, {quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "caption": `*TERIMAKASIH TELAT REPORT BUG*`} } } })
+                    reply('SE HA ENTREGADO UN INFORME DE ERROR. GRACIAS POR REPORTAR CARACTERÍSTICAS')                     
 					break   
 					case 'chat':
-                    if (args.length < 1) return reply(`contoh ${prefix}chat halo min apa kabar`)
+                    if (args.length < 1) return reply(`Ejemplo ${prefix}chat halo min apa kabar`)
                     const cet1 = body.slice(6)
                     if (cet1.length > 300) return nayla.sendMessage(from, 'Maaf Teks Terlalu Panjang, Maksimal 300 Teks', msgType.text, {quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "caption": cr} } } })
                     var nomor = nay.participant
@@ -2364,18 +2365,18 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     case 'asupan2':
                     anu = await fetchJson(`https://api.xteam.xyz/asupan/wibu?APIKEY=${apixteam}`)
                     anu1 = `➻ *NAMA* : ${anu.result.username}\n`                                                     
-                    anu1 += `➻ *USERNAME* : ${anu.result.full_name}\n`
-                    anu1 += `➻ *ID* : ${anu.result.profile_id}\n`
+                    anu1 += `➻ *NOMBRE DE USUARIO* : ${anu.result.full_name}\n`
+                    anu1 += `➻ *IDENTIFICACIÓN* : ${anu.result.profile_id}\n`
                     anu1 += `➻ *BIO* : ${anu.result.biography}\n`
-                    anu1 += `➻ *FOLLOWERS* : ${anu.result.followers}\n`
-                    anu1 += `➻ *FOLLOWING* : ${anu.result.following}\n`
-                    anu1 += `➻ *URL* : ${anu.result.external_url}\n`
-                    anu1 += `➻ *PRIVATE* : ${anu.result.is_private}\n`
-                    anu1 += `➻ *VERIFY* : ${anu.result.is_verified}\n`
+                    anu1 += `➻ *SEGUIDORES* : ${anu.result.followers}\n`
+                    anu1 += `➻ *SIGUIENTE* : ${anu.result.following}\n`
+                    anu1 += `➻ *Url* : ${anu.result.external_url}\n`
+                    anu1 += `➻ *PRIVADO* : ${anu.result.is_private}\n`
+                    anu1 += `➻ *VERIFICAR* : ${anu.result.is_verified}\n`
                     anu1 += `➻ *TYPE* : ${anu.result.type}\n`
-                    anu1 += `➻ *COMENT* : ${anu.result.comment}\n`
+                    anu1 += `➻ *COMENTAR* : ${anu.result.comment}\n`
                     anu1 += `➻ *LIKE* : ${anu.result.like}\n`
-                    anu1 += `➻ *CAPTION* : ${anu.result.caption}\n`
+                    anu1 += `➻ *SUBTÍTULO* : ${anu.result.caption}\n`
                     anu1 += `➻ *LINK* : ${anu.result.link}\n`
                     anu2 = await getBuffer(anu.result.profile_pic_url_hd)
                     nayla.sendMessage(from, anu2, image, {caption: anu1, quoted: nay})
@@ -2385,239 +2386,239 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     nayla.sendMessage(from, anu, image, {quoted: nay})
                     break
                     case 'nulis1':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} nama & kelas & nulis*`)
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} nama & kelas & nulis*`)
                     var F = body.slice(8)
 			        var F1 = F.split("&")[0];
 			 	    var F2 = F.split("&")[1]; 
 			 	    var F3 = F.split("&")[2]; 
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                     anu = await getBuffer(`https://api.xteam.xyz/magernulis?nama=${F1}&kelas=${F2}&text=${F3}&APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nih kak`, quoted: nay})
                     break
                     case 'nulis2':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                     F = body.slice(8)              			    
                     anu = await getBuffer(`https://api.xteam.xyz/magernulis2?text=${F}&APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}) 
                     break 
                     case 'nulis3':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                     F = body.slice(8)              			    
                     anu = await getBuffer(`https://api.xteam.xyz/magernulis3?text=${F}&APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}) 
                     break 
                     case 'nulis4':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                     F = body.slice(8)              			    
                     anu = await getBuffer(`https://api.xteam.xyz/magernulis?text=${F}&APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}) 
                     break 
                     case 'nulis5':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                     F = body.slice(8)              			    
                     anu = await getBuffer(`https://api.xteam.xyz/magernulis5?text=${F}&APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}) 
                     break 
                     case 'nulis6':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                     F = body.slice(8)              			    
                     anu = await getBuffer(`https://api.xteam.xyz/magernulis6?text=${F}&APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `Nihh kack`, quoted: nay1}) 
                     break                     
                     case 'video1':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                     F = body.slice(8)              			    
                     anu = await getBuffer(`https://api.xteam.xyz/videomaker/poly?text=${F}&APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, video, {caption: `Nihh kack`, quoted: nay1}) 
                     break
                     case 'video2':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                     F = body.slice(8)              			    
                     anu = await getBuffer(`https://api.xteam.xyz/videomaker/bold?text=${F}&APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, video, {caption: `Nihh kack`, quoted: nay1}) 
                     break
                     case 'video3':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                     F = body.slice(8)              			    
                     anu = await getBuffer(`https://api.xteam.xyz/videomaker/glowing?text=${F}&APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, video, {caption: `Nihh kack`, quoted: nay1}) 
                     break
                     case 'video4':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                     F = body.slice(8)              			    
                     anu = await getBuffer(`https://api.xteam.xyz/videomaker/colorful?text=${F}&APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, video, {caption: `Nihh kack`, quoted: nay1}) 
                     break
                     case 'video5':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                     F = body.slice(8)              			    
                     anu = await getBuffer(`https://api.xteam.xyz/videomaker/army?text=${F}&APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, video, {caption: `Nihh kack`, quoted: nay1}) 
                     break
                     case 'video6':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} bot whatsapp*`)
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr) 
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} bot whatsapp*`)
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr) 
                     F = body.slice(8)              			    
                     anu = await getBuffer(`https://api.xteam.xyz/videomaker/retro?text=${F}&APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, video, {caption: `Nihh kack`, quoted: nay1}) 
                     break
                     case 'orgy':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/orgy?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'nsfwneko':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/nsfwneko?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'mstrb':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/mstrb?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'manga':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/manga?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'jahy':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/jahy?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'hentaigif':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/hentaigif?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'hentai':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/hentai?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'glasses':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/glasses?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'gangbang':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/gangbang?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'ero':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/ero?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'cuckold':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/cuckold?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'blowjob':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/blowjob?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'bdsm':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/bdsm?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'ass':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/ass?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'ahegao':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/ahegao?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'zettairyouiki':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/zettairyouiki?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'wpnsfwmobile':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/wpnsfwmobile?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'wpmobile':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/wpmobile?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'wallpaper':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/wallpaper?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'thighs':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/thighs?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'uniform':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/uniform?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'tentacles':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/tentacles?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'sfwneko':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/sfwneko?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'pussy':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/pussy?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
                     case 'panties':
                     if (!isBotx) return reply(nyz.botx(prefix))
-                    costum('[❗] SEDANG DIPROSES', text, tescuk, cr2) 
+                    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr2) 
                     anu = await getBuffer(`https://api.xteam.xyz/randomimage/panties?APIKEY=${apixteam}`)
                     nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay1}) 
                     break
@@ -2631,7 +2632,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     case 'gon': case 'killua': case 'sagiri': case 'rimuru': case 'natsu': case 'genos': case 'saitama': case 'miku':
                     nayla.updatePresence(from, Presence.composing) 
 				    data = await fetchJson(`https://api.fdci.se/rep.php?gambar=karakter anime ${command} hd`, {method: 'get'})
-				    costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+				    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
 				    n = JSON.parse(JSON.stringify(data));
 				    nimek =  n[Math.floor(Math.random() * n.length)];
 				    pok = await getBuffer(nimek)
@@ -2640,21 +2641,21 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     case 'foto': case 'pinterest':              
 				    nayla.updatePresence(from, Presence.composing) 
 				    data = await fetchJson(`https://api.fdci.se/rep.php?gambar=${args[0]}`, {method: 'get'})
-				    costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+				    costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
 				    n = JSON.parse(JSON.stringify(data));
 				    nimek =  n[Math.floor(Math.random() * n.length)];
 				    pok = await getBuffer(nimek)
 				    nayla.sendMessage(from, pok, image, { quoted: nay})
 				    break
                     case 'ramalnomer':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} 08123456789*`)
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} 08123456789*`)
                     F = body.slice(12)
                     anu = await fetchJson(`https://api.xteam.xyz/primbon/nomorhoki?no=${F}&APIKEY=${apixteam}`)
                     anu1 = `➻ *RAMAL* : ${anu.result}`
                     reply(anu1)
                     break
                     case 'ramalcinta':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} 1&1&2001&nama&1&2&2003&nama2`)
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} 1&1&2001&nama&1&2&2003&nama2`)
                     var F = body.slice(12)
 			        var F1 = F.split("&")[0];
 			 	    var F2 = F.split("&")[1]; 
@@ -2676,7 +2677,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     nayla.sendMessage(from, anu2, image, {caption: anu1, quoted: nay})
                     break
                     case 'ramaljodoh':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} 1&1&2001&nama&1&2&2003&nama2`)
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} 1&1&2001&nama&1&2&2003&nama2`)
                     var F = body.slice(12)
 			        var F1 = F.split("&")[0];
 			 	    var F2 = F.split("&")[1]; 
@@ -2696,7 +2697,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 			 	    reply(anu1)
 			 	    break
 			 	    case 'jodohbali':
-			 	    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} 1&1&2001&nama&1&2&2003&nama2`)
+			 	    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} 1&1&2001&nama&1&2&2003&nama2`)
                     var F = body.slice(11)
 			        var F1 = F.split("&")[0];
 			 	    var F2 = F.split("&")[1]; 
@@ -2716,7 +2717,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 			 	    reply(anu1)
 			 	    break
 			 	    case 'ramalnikah':
-			 	    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} 1&1&2001&nama&1&2&2003&nama2`)
+			 	    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} 1&1&2001&nama&1&2&2003&nama2`)
 			 	    var F = body.slice(12)
 			        var F1 = F.split("&")[0];
 			 	    var F2 = F.split("&")[1]; 
@@ -2737,7 +2738,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 			 	    reply(anu1)
 			 	    break
                     case 'taksirmimpi':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} di gigit ular`)
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} di gigit ular`)
                     F = body.slice(9)
                     anu = await fetchJson(`https://api.xteam.xyz/primbon/tafsirmimpi?q=${F}&APIKEY=${apixteam}`)
                     anu1 = `➻ *HASIL* : ${anu.result}`
@@ -2745,7 +2746,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     break
                     case 'suit':
                     F = body.slice(6)
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} batu`)
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} batu`)
                     anu = await fetchJson(`https://api.xteam.xyz/game/suit?q=${F}&APIKEY=${apixteam}`)
                     anu1 = `➻ *KAMU* : ${anu.jawabanmu}\n`
                     anu1 += `➻ *BOT* : ${anu.jawabanbot}\n`
@@ -2755,7 +2756,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     break
                     case 'tebakangka':
                     F = body.slice(12)
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} 9`)
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} 9`)
                     anu = await fetchJson(`https://api.xteam.xyz/game/tebakangka?q=${F}&APIKEY=${apixteam}`)
                     anu1 = `➻ *KAMU* : ${anu.jawabanmu}\n`
                     anu1 += `➻ *BOT* : ${anu.jawabanbot}\n`
@@ -2765,32 +2766,32 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     break
                     case 'tebakbendera':
                     anu = await fetchJson(`https://api.xteam.xyz/game/tebakbendera?APIKEY=${apixteam}`)
-                    anu1 = `➻ *SOAL* : INI BENDERA APA?? ${anu.bendera} TEBAK!! WAKTU 60 DETIK`
+                    anu1 = `➻ *SOAL* : INI BENDERA APA?? ${anu.bendera} TEBAK!! WAKTU 60  Segundos `
                     anu2 = `➻ *JAWABAN* : ${anu.jawaban} SELAMAT YG TELAH MENJAWAB BENAR`
                     setTimeout( () => {
                     nayla.sendMessage(from, anu1, text, {quoted: nay1})
                     }, 1)
                     setTimeout( () => {
-                    costum('50 DETIK LAGI', text, tescuk, cr)
+                    costum('50  Segundos  LAGI', text, tescuk, cr)
                     }, 10000)                                                                                                                                   
                     setTimeout( () => {
-                    costum('40 DETIK LAGI', text, tescuk, cr)
+                    costum('40  Segundos  LAGI', text, tescuk, cr)
                     }, 20000)    
                     setTimeout( () => {
-                    costum('30 DETIK LAGI', text, tescuk, cr)
+                    costum('30  Segundos  LAGI', text, tescuk, cr)
                     }, 30000)    
                     setTimeout( () => {
-                    costum('20 DETIK LAGI', text, tescuk, cr)
+                    costum('20  Segundos  LAGI', text, tescuk, cr)
                     }, 40000)                                       
                     setTimeout( () => {
-                    costum('10 DETIK LAGI', text, tescuk, cr)
+                    costum('10  Segundos  LAGI', text, tescuk, cr)
                     }, 50000)                                                                                                                                                     
                     setTimeout( () => {
                     nayla.sendMessage(from, anu2, text,{quoted: nay1})                   
                     }, 60000)                                                                          
                     break     
                     case 'kata':
-                    if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} anjayy cok hayukkkk&by nama kamu`)
+                    if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} anjayy cok hayukkkk&by nama kamu`)
 			 	    var F = body.slice(6)
 			        var F1 = F.split("&")[0];
 			        var F2 = F.split("&")[1];
@@ -2899,525 +2900,525 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                      
      
                      case 'maker1':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(8)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/neon?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker2':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      const Q = args.join(' ')
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/snowtext?text=${Q}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker3':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      const A = args.join(' ')
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/cloudtext?text=${A}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker4':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(8)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/3dluxury?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker5':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(8)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/3dgradient?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker6':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(8)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/blackpink?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker7':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      var F2 = body.slice(8)
 			         var F = F2.split("&")[0];
 			 	     var F1 = F2.split("&")[1]; 
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/realisticvintage?text=${F}&text2=${F1}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker8':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(8)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/realisticcloud?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker9':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(8)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/cloudsky?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker10':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/sandsummerbeach?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker11':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/sandwriting?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker12':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/sandengraved?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker13':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/summerysandwriting?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker14':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/balloontext?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker15':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/3dglue?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker16':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/balloontext?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker17':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/metaldarkgold?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker19':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/1917?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker20':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/minion3d?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker21':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/holographic3d?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker22':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/metalpurpledual?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker23':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/deluxesilver?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker24':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/glossybluemetal?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker25':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/deluxegold?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker26':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/glossycarbon?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker27':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/fabric?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker28':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      var F2 = body.slice(9)
 			         var F = F2.split("&")[0];
 			 	     var F1 = F2.split("&")[1]; 
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/stone?text=${F}&text2=${F1}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker29':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      var F2 = body.slice(9)
 			         var F = F2.split("&")[0];
 			 	     var F1 = F2.split("&")[1]; 
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/3davengers?text=${F}&text2=${F1}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker30':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      var F2 = body.slice(9)
 			         var F = F2.split("&")[0];
 			 	     var F1 = F2.split("&")[1]; 
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/marvelstudios?text=${F}&text2=${F1}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay1})
                      break
                      case 'maker31':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      var F2 = body.slice(9)
 			         var F = F2.split("&")[0];
 			 	     var F1 = F2.split("&")[1]; 
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/marvel?text=${F}&text2=${F1}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker32':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/happnewyearfirework?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker33':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/newyear3d?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker34':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/neontext?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker35':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/metaldarkgoldeffect?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker36':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/helloweenfire?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker37':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/bloodontheroastedglass?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker38':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/xmas3d?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker39':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      var F2 = body.slice(9)
 			         var F = F2.split("&")[0];
 			 	     var F1 = F2.split("&")[1]; 
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/3dmetalsilver?text=${F}&text2=${F1}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker40':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      var F2 = body.slice(9)
 			         var F = F2.split("&")[0];
 			 	     var F1 = F2.split("&")[1]; 
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/3dmetalrosegold?text=${F}&text2=${F1}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker41':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      var F2 = body.slice(9)
 			         var F = F2.split("&")[0];
 			 	     var F1 = F2.split("&")[1]; 
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/3dmetalgalaxy?text=${F}&text2=${F1}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker42':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      var F2 = body.slice(9)
 			         var F = F2.split("&")[0];
 			 	     var F1 = F2.split("&")[1]; 
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/3dmetalgold?text=${F}&text2=${F1}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker43':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru & bot`)                      
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru & bot`)                      
                      var F2 = body.slice(9)
 			         var F = F2.split("&")[0];
 			 	     var F1 = F2.split("&")[1]; 
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/lionlogomascot?text=${F}&text2=${F1}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker44':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      var F2 = body.slice(9)
 			         var F = F2.split("&")[0];
 			 	     var F1 = F2.split("&")[1]; 
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/wolflogoblackwhite?text=${F}&text2=${F1}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker45':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      var F2 = body.slice(9)
 			         var F = F2.split("&")[0];
 			 	     var F1 = F2.split("&")[1]; 
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/wolflogogalaxy?text=${F}&text2=${F1}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker46':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      var F2 = body.slice(9)
 			         var F = F2.split("&")[0];
 			 	     var F1 = F2.split("&")[1]; 
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/ninjalogo?text=${F}&text2=${F1}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker47':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/jokerlogo?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker48':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/wicker?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker49':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/naturalleaves?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker50':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/fireworksparkle?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker51':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/skeleton?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker52':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/redfoilballon?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker53':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/purplefoilballon?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker54':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/pinkfoilballon?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker55':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/greenfoilballon?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker56':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/cyanfoilballon?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker57':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/bluefoilballon?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker58':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/goldfoilballon?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker59':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/steel?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker60':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/ultragloss?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker61':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/denim?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker62':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/decorategreen?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker63':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/decoratepurple?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker64':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/peridotstone?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker65':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/rock?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker66':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/lava?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker67':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/yellowglass?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker68':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/purpleglass?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker69':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/orangeglass?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker70':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/greeglass?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker71':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/cyanglass?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
                      case 'maker72':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://api.xteam.xyz/textpro/blueglass?text=${F}&APIKEY=${apixteam}`)
                      nayla.sendMessage(from, anu, image, {caption: `nih kack`, quoted: nay})
                      break
@@ -3429,7 +3430,7 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                      
                       
                      case 'attp':
-                     if (args.length < 1) return reply('Kasih teks lah omm')
+                     if (args.length < 1) return reply('Y el Texto?')
                      ini = body.slice(6)
                      atetepe = await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(ini)}`)
                      nayla.sendMessage(from, atetepe, sticker, {quoted: nay})
@@ -3444,49 +3445,49 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                      nayla.sendMessage(from, anu, MessageType.audio, {quoted: nay, mimetype: 'audio/mp4', ptt:true})
                      break
                      case 'blackpink':
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://lindow-api.herokuapp.com/api/blackpink?apikey=LindowApi`)
                      nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay})
                      break
                      case 'exo':
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://lindow-api.herokuapp.com/api/exo?apikey=LindowApi`)
                      nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay})
                      break
                      case 'bts':
-                     costum('[❗] SEDANG DIPROSES', text, tescuk, cr)
+                     costum('[❗] ⌛ En Proceso ⌛', text, tescuk, cr)
                      anu = await getBuffer(`https://lindow-api.herokuapp.com/api/bts?apikey=LindowApi`)
                      nayla.sendMessage(from, anu, image, {caption: `nihh kack`, quoted: nay})
                      break
                      case 'simi':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} hai sayang`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} hai sayang`)
                      anu = await fetchJson(`https://lindow-api.herokuapp.com/api/simi?text=Halo&lang=id&apikey=LindowApi`)
                      anu1 = `${anu.response.text}`
                      reply(anu1)
                      break
                      case 'textfont':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(10)
                      anu = await fetchJson(`http://kocakz.herokuapp.com/api/random/text/fancytext?text=${F}`)
                      anu1 = `${anu.result}`
                      reply(anu1)
                      break
                      case 'kapital':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(9)
                      anu = await fetchJson(`https://api-self.herokuapp.com/api/kapital?teks=${F}`)
                      anu1 = `${anu.result}`
                      reply(anu1)
                      break                      
                      case 'halah': case 'hilih': case 'huluh': case 'heleh': case 'holoh':
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru`)
                      F = body.slice(7)
                      anu = await fetchJson(`https://api-self.herokuapp.com/api/${command}?teks=${F}`)
                      anu1 = `${anu.result}`
                      reply(anu1)
                      break
                      case 'boomtext':  
-                     if (args.length < 1) return reply(`[❗] CONTOH??\n*${prefix}${command} rimuru&50`)
+                     if (args.length < 1) return reply(`[❗] Ejemplo??\n*${prefix}${command} rimuru&50`)
                      var F = body.slice(10)
 			         var F1 = F.split("&")[0];
 			 	     var F2 = F.split("&")[1]; 
@@ -3504,9 +3505,9 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                    	case 'welcome':
 					if (!isGroup) return reply(`GROUP ONLY`)
 					if (!isGroupAdmins) return reply(`LU ADMIN??`)
-					if (args.length < 1) return reply('PILIH 1/0')
+					if (args.length < 1) return reply('SELECCIONÉ 1/0')
 					if (Number(args[0]) === 1) {
-					if (isWelkom) return reply('*SUDAH AKTIF* !!!')
+					if (isWelkom) return reply('*ACTIVADO* !!!')
 					welkom.push(from)
 					fs.writeFileSync('./nayla/welkom.json', JSON.stringify(welkom))
 					reply('[❗] SUKSES AKTIF WELCOME')
@@ -3520,98 +3521,98 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 					break  
                     case 'antilink': 
 					if (!isGroupAdmins) return reply(`LU ADMIN??`)
-					if (args.length < 1) return reply('PILIH 1/0')
+					if (args.length < 1) return reply('SELECCIONÉ 1/0')
 					if (Number(args[0]) === 1) {
-					if (isEventon) return reply('*SUDAH AKTIF* !!!')
+					if (isEventon) return reply('*ACTIVADO* !!!')
 					antilink.push(from)
 					fs.writeFileSync('./nayla/antilink.json', JSON.stringify(antilink))
-					reply('*[❗] ACTIVATED ANTILINK*')
+					reply('*[❗] SE ACTIVO ANTILINK*')
 					} else if (Number(args[0]) === 0) {
 					antilink.splice(from, 1)
 					fs.writeFileSync('./nayla/antilink.json', JSON.stringify(antilink))
-					reply('*[❗] DEACTIVATED ANTILINK*')
+					reply('*[❗] SE DESACTIVO ANTILINK*')
 					} else {
-					reply(`PILIH 1/0`)
+					reply(`SELECCIONÉ 1/0`)
 					}
 					break
 					case 'botx': 
 					if (!isGroupAdmins) return reply(`LU ADMIN??`)
-					if (args.length < 1) return reply('PILIH 1/0')
+					if (args.length < 1) return reply('SELECCIONÉ 1/0')
 					if (Number(args[0]) === 1) {
-					if (isEventon) return reply('*SUDAH AKTIF* !!!')
+					if (isEventon) return reply('*ACTIVADO* !!!')
 					botx.push(from)
 					fs.writeFileSync('./nayla/botx.json', JSON.stringify(botx))
-					reply('*[❗] ACTIVATED BOTX*')
+					reply('*[❗] SE ACTIVO BOTX*')
 					} else if (Number(args[0]) === 0) {
 					botx.splice(from, 1)
 					fs.writeFileSync('./nayla/botx.json', JSON.stringify(botx))
-					reply('*[❗] DEACTIVATED BOTX*')
+					reply('*[❗] SE DESACTIVO BOTX*')
 					} else {
-					reply(`PILIH 1/0`)
+					reply(`SELECCIONÉ 1/0`)
 					}
 					break
 					case 'antigay': 
 					if (!isGroupAdmins) return reply(`LU ADMIN??`)
-					if (args.length < 1) return reply('PILIH 1/0')
+					if (args.length < 1) return reply('SELECCIONÉ 1/0')
 					if (Number(args[0]) === 1) {
-					if (isEventon) return reply('*SUDAH AKTIF* !!!')
+					if (isEventon) return reply('*ACTIVADO* !!!')
 					antigay.push(from)
 					fs.writeFileSync('./nayla/antigay.json', JSON.stringify(antigay))
-					reply('*[❗] ACTIVATED ANTIGAY*')
+					reply('*[❗] SE ACTIVO ANTIGAY*')
 					} else if (Number(args[0]) === 0) {
 					antilink.splice(from, 1)
 					fs.writeFileSync('./nayla/antigay.json', JSON.stringify(antigay))
-					reply('*[❗] DEACTIVATED ANTIGAY*')
+					reply('*[❗] SE DESACTIVO ANTIGAY*')
 					} else {
-					reply(`PILIH 1/0`)
+					reply(`SELECCIONÉ 1/0`)
 					}
 					break
 					case 'antibocil': 
 					if (!isGroupAdmins) return reply(`LU ADMIN??`)
-					if (args.length < 1) return reply('PILIH 1/0')
+					if (args.length < 1) return reply('SELECCIONÉ 1/0')
 					if (Number(args[0]) === 1) {
-					if (isEventon) return reply('*SUDAH AKTIF* !!!')
+					if (isEventon) return reply('*ACTIVADO* !!!')
 					antibocil.push(from)
 					fs.writeFileSync('./nayla/antibocil.json', JSON.stringify(antibocil))
-					reply('*[❗] ACTIVATED ANTIGAY*')
+					reply('*[❗] ANTIGAY ACTIVADO *')
 					} else if (Number(args[0]) === 0) {
 					antibocil.splice(from, 1)
 					fs.writeFileSync('./nayla/antibocil.json', JSON.stringify(antibocil))
-					reply('*[❗] DEACTIVATED ANTIGAY*')
+					reply('*[❗] ANTIGAY DESACTIVADO*')
 					} else {
-					reply(`PILIH 1/0`)
+					reply(`SELECCIONÉ 1/0`)
 					}
 					break
 					case 'antiwibu': 
 					if (!isGroupAdmins) return reply(`LU ADMIN??`)
-					if (args.length < 1) return reply('PILIH 1/0')
+					if (args.length < 1) return reply('SELECCIONE 1/0')
 					if (Number(args[0]) === 1) {
-					if (isEventon) return reply('*SUDAH AKTIF* !!!')
+					if (isEventon) return reply('*ACTIVADO* !!!')
 					antiwibu.push(from)
 					fs.writeFileSync('./nayla/antiwibu.json', JSON.stringify(antiwibu))
-					reply('*[❗] ACTIVATED ANTIWIBU*')
+					reply('*[❗] ANTIWIBU ACTIVADO*')
 					} else if (Number(args[0]) === 0) {
 					antiwibu.splice(from, 1)
 					fs.writeFileSync('./nayla/antiwibu.json', JSON.stringify(antiwibu))
-					reply('*[❗] DEACTIVATED ANTIWIBU*')
+					reply('*[❗] ANTIWIBU DESACTIVADO*')
 					} else {
-					reply(`PILIH 1/0`)
+					reply(`SELECCIONÉ 1/0`)
 					}
 					break
 					case 'antijawa': 
 					if (!isGroupAdmins) return reply(`LU ADMIN??`)
-					if (args.length < 1) return reply('PILIH 1/0')
+					if (args.length < 1) return reply('SELECCIONAR 1/0')
 					if (Number(args[0]) === 1) {
-					if (isEventon) return reply('*SUDAH AKTIF* !!!')
+					if (isEventon) return reply('*ACTIVADO* !!!')
 					antijawa.push(from)
 					fs.writeFileSync('./nayla/antiwibu.json', JSON.stringify(antijawa))
-					reply('*[❗] ACTIVATED ANTIJAWA*')
+					reply('*[❗] ANTIJAWA ACTIVADO*')
 					} else if (Number(args[0]) === 0) {
 					antijawa.splice(from, 1)
 					fs.writeFileSync('./nayla/antiwibu.json', JSON.stringify(antijawa))
-					reply('*[❗] DEACTIVATED ANTIJAWA*')
+					reply('*[❗] ANTIJAWA DESACTIVADO*')
 					} else {
-					reply(`PILIH 1/0`)
+					reply(`SELECCIONÉ 1/0`)
 					}
 					break
 /* ===================================================[ BOT WHATSAPP ]==============================================================*/    
@@ -3620,25 +3621,25 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
         					
 					case 'tebak':
                     anu = await fetchJson(`http://dt-04.herokuapp.com/api/tebak`)
-                    anu1 = `➻ *SOAL* : ${anu.pertanyaan}`
-                    anu2 = `➻ *JAWABAN* : ${anu.jawaban_full}`
+                    anu1 = `➻ *PREGUNTA* : ${anu.pertanyaan}`
+                    anu2 = `➻ *RESPUESTA* : ${anu.jawaban_full}`
                     setTimeout( () => {
                     nayla.sendMessage(from, anu1, text, {quoted: nay1})
                     }, 1)
                     setTimeout( () => {
-                    costum('50 DETIK LAGI', text, tescuk, cr)
+                    costum('50  Segundos  LAGI', text, tescuk, cr)
                     }, 10000)                                                                                                                                   
                     setTimeout( () => {
-                    costum('40 DETIK LAGI', text, tescuk, cr)
+                    costum('40  Segundos  LAGI', text, tescuk, cr)
                     }, 20000)    
                     setTimeout( () => {
-                    costum('30 DETIK LAGI', text, tescuk, cr)
+                    costum('30  Segundos  LAGI', text, tescuk, cr)
                     }, 30000)    
                     setTimeout( () => {
-                    costum('20 DETIK LAGI', text, tescuk, cr)
+                    costum('20  Segundos  LAGI', text, tescuk, cr)
                     }, 40000)                                       
                     setTimeout( () => {
-                    costum('10 DETIK LAGI', text, tescuk, cr)
+                    costum('10  Segundos  LAGI', text, tescuk, cr)
                     }, 50000)                                                                                                                                                     
                     setTimeout( () => {
                     nayla.sendMessage(from, anu2, text,{quoted: nay1})                   
@@ -3657,31 +3658,31 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 					if (!isAntiLink) return
 					if (isGroupAdmins) return reply('alahhh siaa :v admin grub mahh bebas yakan 😎 EZzz')
 					nayla.updatePresence(from, Presence.composing)
-					if (messagesC.includes("@62812874133914")) return reply("izin diterima")
+					if (messagesC.includes("@12603763944 ")) return reply("izin diterima")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-					reply(`Link Group Terdeteksi maaf ${sender.split("@")[0]} anda akan di kick dari group 5detik lagi`)
+					reply(`Link Group Terdeteksi maaf ${sender.split("@")[0]} Seras Expulsado De Este Grupo En 5 Segundos`)
 					setTimeout( () => {
 					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("1detik")
+					reply("1 Segundos ")
 					}, 4000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("2detik")
+					reply("2 Segundos ")
 					}, 3000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("3detik")
+					reply("3 Segundos ")
 					}, 2000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("4detik")
+					reply("4 Segundos ")
 					}, 1000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("5detik")
+					reply("5 Segundos ")
 					}, 0)
 				    }
 				    
@@ -3689,98 +3690,98 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
                     if (budy.includes("syg")){
 					if (!isGroup) return
 					if (!isAntigay) return
-					if (isGroupAdmins) return reply('alahhh siaa :v admin grub mahh bebas nge gayyyy yakan 😎 EZzz')
+					if (isGroupAdmins) return reply('Eres Un Admin, El Bot No Te Baneara')
 					nayla.updatePresence(from, Presence.composing)
-					if (messagesC.includes("@62812874133914")) return reply("izin diterima")
+					if (messagesC.includes("@12603763944 ")) return reply("izin diterima")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-					reply(`Gayy Terdeteksi maaf ${sender.split("@")[0]} anda akan di kick dari group 5detik lagi`)
+					reply(`Gayy Terdeteksi maaf ${sender.split("@")[0]} Seras Expulsado De Este Grupo En 5 Segundos`)
 					setTimeout( () => {
 					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("1detik")
+					reply("1 Segundos ")
 					}, 4000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("2detik")
+					reply("2 Segundos ")
 					}, 3000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("3detik")
+					reply("3 Segundos ")
 					}, 2000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("4detik")
+					reply("4 Segundos ")
 					}, 1000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("5detik")
+					reply("5 Segundos ")
 					}, 0)
 				    }
 				     
 				    if (budy.includes("ayan")){
 					if (!isGroup) return
 					if (!isAntigay) return
-					if (isGroupAdmins) return reply('alahhh siaa :v admin grub mahh bebas nge gayyyy yakan 😎 EZzz')
+					if (isGroupAdmins) return reply('Eres Un Admin, El Bot No Te Baneara')
 					nayla.updatePresence(from, Presence.composing)
-					if (messagesC.includes("@62812874133914")) return reply("izin diterima")
+					if (messagesC.includes("@12603763944 ")) return reply("izin diterima")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-					reply(`Gayy Terdeteksi maaf ${sender.split("@")[0]} anda akan di kick dari group 5detik lagi`)
+					reply(`Gayy Terdeteksi maaf ${sender.split("@")[0]} Seras Expulsado De Este Grupo En 5 Segundos`)
 					setTimeout( () => {
 					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("1detik")
+					reply("1 Segundos ")
 					}, 4000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("2detik")
+					reply("2 Segundos ")
 					}, 3000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("3detik")
+					reply("3 Segundos ")
 					}, 2000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("4detik")
+					reply("4 Segundos ")
 					}, 1000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("5detik")
+					reply("5 Segundos ")
 					}, 0)
 				    }
 				    if (budy.includes("love ")){
 					if (!isGroup) return
 					if (!isAntigay) return
-					if (isGroupAdmins) return reply('alahhh siaa :v admin grub mahh bebas nge gayyyy yakan 😎 EZzz')
+					if (isGroupAdmins) return reply('Eres Un Admin, El Bot No Te Baneara')
 					nayla.updatePresence(from, Presence.composing)
-					if (messagesC.includes("@62812874133914")) return reply("izin diterima")
+					if (messagesC.includes("@12603763944 ")) return reply("izin diterima")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-					reply(`Gayy Terdeteksi maaf ${sender.split("@")[0]} anda akan di kick dari group 5detik lagi`)
+					reply(`Gayy Terdeteksi maaf ${sender.split("@")[0]} Seras Expulsado De Este Grupo En 5 Segundos`)
 					setTimeout( () => {
 					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("1detik")
+					reply("1 Segundos ")
 					}, 4000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("2detik")
+					reply("2 Segundos ")
 					}, 3000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("3detik")
+					reply("3 Segundos ")
 					}, 2000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("4detik")
+					reply("4 Segundos ")
 					}, 1000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("5detik")
+					reply("5 Segundos ")
 					}, 0)
 				    }
 				    if (budy.includes("ayuk")){
@@ -3788,255 +3789,255 @@ const botx = JSON.parse(fs.readFileSync('./nayla/botx.json'))
 					if (!isAntibocil) return
 					if (isGroupAdmins) return reply('alahhh siaa :v admin grub mahh bebas nge bocilz yakan 😎 EZzz')
 					nayla.updatePresence(from, Presence.composing)
-					if (messagesC.includes("@62812874133914")) return reply("izin diterima")
+					if (messagesC.includes("@12603763944 ")) return reply("izin diterima")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-					reply(`bocil Terdeteksi maaf ${sender.split("@")[0]} anda akan di kick dari group 5detik lagi`)
+					reply(`bocil Terdeteksi maaf ${sender.split("@")[0]} Seras Expulsado De Este Grupo En 5 Segundos`)
 					setTimeout( () => {
 					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("1detik")
+					reply("1 Segundos ")
 					}, 4000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("2detik")
+					reply("2 Segundos ")
 					}, 3000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("3detik")
+					reply("3 Segundos ")
 					}, 2000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("4detik")
+					reply("4 Segundos ")
 					}, 1000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("5detik")
+					reply("5 Segundos ")
 					}, 0)
 				    }
 				    if (budy.includes("chan(")){
 					if (!isGroup) return
 					if (!isAntiwibu) return
-					if (isGroupAdmins) return reply('alahhh siaa :v admin grub mahh bebas nge wibu yakan 😎 EZzz')
+					if (isGroupAdmins) return reply('Eres Un Admin, El Bot No Te Baneara')
 					nayla.updatePresence(from, Presence.composing)
-					if (messagesC.includes("@62812874133914")) return reply("izin diterima")
+					if (messagesC.includes("@12603763944 ")) return reply("izin diterima")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-					reply(`wibu Terdeteksi maaf ${sender.split("@")[0]} anda akan di kick dari group 5detik lagi`)
+					reply(`wibu Terdeteksi maaf ${sender.split("@")[0]} Seras Expulsado De Este Grupo En 5 Segundos`)
 					setTimeout( () => {
 					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("1detik")
+					reply("1 Segundos ")
 					}, 4000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("2detik")
+					reply("2 Segundos ")
 					}, 3000)
 					setTimeout( () => { 
 					nayla.updatePresence(from, Presence.composing)
-					reply("3detik")
+					reply("3 Segundos ")
 					}, 2000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("4detik")
+					reply("4 Segundos ")
 					}, 1000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("5detik")
+					reply("5 Segundos ")
 					}, 0)
 				    }
 				    if (budy.includes("yamete")){
 					if (!isGroup) return
 					if (!isAntiwibu) return
-					if (isGroupAdmins) return reply('alahhh siaa :v admin grub mahh bebas nge wibu yakan 😎 EZzz')
+					if (isGroupAdmins) return reply('Eres Un Admin, El Bot No Te Baneara')
 					nayla.updatePresence(from, Presence.composing)
-					if (messagesC.includes("@62812874133914")) return reply("izin diterima")
+					if (messagesC.includes("@12603763944 ")) return reply("izin diterima")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-					reply(`wibu Terdeteksi maaf ${sender.split("@")[0]} anda akan di kick dari group 5detik lagi`)
+					reply(`wibu Terdeteksi maaf ${sender.split("@")[0]} Seras Expulsado De Este Grupo En 5 Segundos`)
 					setTimeout( () => {
 					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("1detik")
+					reply("1 Segundos ")
 					}, 4000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("2detik")
+					reply("2 Segundos ")
 					}, 3000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("3detik")
+					reply("3 Segundos ")
 					}, 2000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("4detik")
+					reply("4 Segundos ")
 					}, 1000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("5detik")
+					reply("5 Segundos ")
 					}, 0)
 				    }
 				    if (budy.includes("ambe")){
 					if (!isGroup) return
 					if (!isAntijawa) return
-					if (isGroupAdmins) return reply('alahhh siaa :v admin grub mahh bebas nge wibu yakan 😎 EZzz')
+					if (isGroupAdmins) return reply('Eres Un Admin, El Bot No Te Baneara')
 					nayla.updatePresence(from, Presence.composing)
-					if (messagesC.includes("@62812874133914")) return reply("izin diterima")
+					if (messagesC.includes("@12603763944 ")) return reply("izin diterima")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-					reply(`jawa Terdeteksi maaf ${sender.split("@")[0]} anda akan di kick dari group 5detik lagi`)
+					reply(`Enlace detectado, lo siento  ${sender.split("@")[0]} Seras Expulsado De Este Grupo En 5 Segundos`)
 					setTimeout( () => {
 					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("1detik")
+					reply("1 Segundos ")
 					}, 4000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("2detik")
+					reply("2 Segundos ")
 					}, 3000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("3detik")
+					reply("3 Segundos ")
 					}, 2000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("4detik")
+					reply("4 Segundos ")
 					}, 1000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("5detik")
+					reply("5 Segundos ")
 					}, 0)
 				    }
 				    if (budy.includes("tempek")){
 					if (!isGroup) return
 					if (!isAntijawa) return
-					if (isGroupAdmins) return reply('alahhh siaa :v admin grub mahh bebas nge wibu yakan 😎 EZzz')
+					if (isGroupAdmins) return reply('Eres Un Admin, El Bot No Te Baneara')
 					nayla.updatePresence(from, Presence.composing)
-					if (messagesC.includes("@62812874133914")) return reply("izin diterima")
+					if (messagesC.includes("@12603763944 ")) return reply("izin diterima")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-					reply(`jawa Terdeteksi maaf ${sender.split("@")[0]} anda akan di kick dari group 5detik lagi`)
+					reply(`Enlace detectado, lo siento  ${sender.split("@")[0]} Seras Expulsado De Este Grupo En 5 Segundos`)
 					setTimeout( () => {
 					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("1detik")
+					reply("1 Segundos ")
 					}, 4000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("2detik")
+					reply("2 Segundos ")
 					}, 3000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("3detik")
+					reply("3 Segundos ")
 					}, 2000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("4detik")
+					reply("4 Segundos ")
 					}, 1000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("5detik")
+					reply("5 Segundos ")
 					}, 0)
 				    }
 				    if (budy.includes("matamu")){
 					if (!isGroup) return
 					if (!isAntijawa) return
-					if (isGroupAdmins) return reply('alahhh siaa :v admin grub mahh bebas nge wibu yakan 😎 EZzz')
+					if (isGroupAdmins) return reply('Eres Un Admin, El Bot No Te Baneara')
 					nayla.updatePresence(from, Presence.composing)
-					if (messagesC.includes("@62812874133914")) return reply("izin diterima")
+					if (messagesC.includes("@12603763944 ")) return reply("izin diterima")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-					reply(`jawa Terdeteksi maaf ${sender.split("@")[0]} anda akan di kick dari group 5detik lagi`)
+					reply(`Enlace detectado, lo siento  ${sender.split("@")[0]} Seras Expulsado De Este Grupo En 5 Segundos`)
 					setTimeout( () => {
 					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("1detik")
+					reply("1 Segundos ")
 					}, 4000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("2detik")
+					reply("2 Segundos ")
 					}, 3000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("3detik")
+					reply("3 Segundos ")
 					}, 2000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("4detik")
+					reply("4 Segundos ")
 					}, 1000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("5detik")
+					reply("5 Segundos ")
 					}, 0)
 				    }
 				    if (budy.includes("jancok")){
 					if (!isGroup) return
 					if (!isAntijawa) return
-					if (isGroupAdmins) return reply('alahhh siaa :v admin grub mahh bebas nge wibu yakan 😎 EZzz')
+					if (isGroupAdmins) return reply('Eres Un Admin, El Bot No Te Baneara')
 					nayla.updatePresence(from, Presence.composing)
-					if (messagesC.includes("@62812874133914")) return reply("izin diterima")
+					if (messagesC.includes("@12603763944 ")) return reply("izin diterima")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-					reply(`jawa Terdeteksi maaf ${sender.split("@")[0]} anda akan di kick dari group 5detik lagi`)
+					reply(`Enlace detectado lo siento ${sender.split("@")[0]} Seras Expulsado De Este Grupo En 5 Segundos`)
 					setTimeout( () => {
 					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("1detik")
+					reply("1 Segundos ")
 					}, 4000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("2detik")
+					reply("2 Segundos ")
 					}, 3000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("3detik")
+					reply("3 Segundos ")
 					}, 2000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("4detik")
+					reply("4 Segundos ")
 					}, 1000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("5detik")
+					reply("5 Segundos ")
 					}, 0)
 				    }
 				    if (budy.includes("aing")){
 					if (!isGroup) return
 					if (!isAntijawa) return
-					if (isGroupAdmins) return reply('alahhh siaa :v admin grub mahh bebas nge wibu yakan 😎 EZzz')
+					if (isGroupAdmins) return reply('Eres Un Admin, El Bot No Te Baneara')
 					nayla.updatePresence(from, Presence.composing)
-					if (messagesC.includes("@62812874133914")) return reply("izin diterima")
+					if (messagesC.includes("@12603763944 ")) return reply("izin diterima")
 					var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-					reply(`jawa Terdeteksi maaf ${sender.split("@")[0]} anda akan di kick dari group 5detik lagi`)
+					reply(`Enlace detectado, lo siento  ${sender.split("@")[0]} Seras Expulsado De Este Grupo En 5 Segundos`)
 					setTimeout( () => {
 					nayla.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
 					}, 5000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("1detik")
+					reply("1 Segundos ")
 					}, 4000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("2detik")
+					reply("2 Segundos ")
 					}, 3000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("3detik")
+					reply("3 Segundos ")
 					}, 2000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("4detik")
+					reply("4 Segundos ")
 					}, 1000)
 					setTimeout( () => {
 					nayla.updatePresence(from, Presence.composing)
-					reply("5detik")
+					reply("5 Segundos ")
 					}, 0)
 				    }				    
 				   
